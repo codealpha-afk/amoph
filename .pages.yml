@@ -8,6 +8,8 @@ content:
     type: collection
     path: src/posts
     filename: "{fields.slug}.md"
+    view:
+      fields: [title, date, category]
     fields:
       - name: title
         label: Title
@@ -21,13 +23,20 @@ content:
       - name: category
         label: Category
         type: select
-        choices:
-          - Doctrine
-          - Initiation
-          - History
-          - Practice
-          - Philippines
-          - Western Esotericism
+        options:
+          values:
+            - label: Doctrine
+              value: Doctrine
+            - label: Initiation
+              value: Initiation
+            - label: History
+              value: History
+            - label: Practice
+              value: Practice
+            - label: Philippines
+              value: Philippines
+            - label: Western Esotericism
+              value: Western Esotericism
       - name: description
         label: Meta Description
         type: string
