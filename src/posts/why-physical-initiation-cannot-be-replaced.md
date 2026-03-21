@@ -1,5 +1,5 @@
 ---
-title: Why Physical Initiation Cannot Be Replaced
+title: "Why Physical Initiation Cannot Be Replaced "
 slug: why-physical-initiation-cannot-be-replaced
 date: 2025-03-22
 category: Initiation
