@@ -101,6 +101,7 @@
   padding: 10px;
   background: none;
   border: none;
+    .site-header__hamburger span
 }
 
 .site-header__hamburger span {
@@ -151,6 +152,7 @@
   opacity: 1;
   visibility: visible;
   pointer-events: all;
+transform: scale(1);
 }
 
 .mobile-nav a {
