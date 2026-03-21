@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ── Per-post meta: update for each article ── -->
+  <title>What is the Unknown Philosopher? | The Martinist Journal</title>
+  <meta name="description" content="Saint-Martin chose his pen name with care. The Unknown Philosopher was not a mask of anonymity but a declaration of spiritual posture.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://amoph.org/blog-post.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://amoph.org/blog-post.html">
+  <meta property="og:title" content="What is the Unknown Philosopher? | AMOPH">
+  <meta property="og:description" content="Saint-Martin chose his pen name with care. A declaration of spiritual posture — the seeker who works in silence.">
+  <meta property="og:image" content="https://amoph.org/images/og-images/amoph-blog-og-image.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What is the Unknown Philosopher? | AMOPH">
+  <meta name="twitter:description" content="Saint-Martin chose his pen name with care. A declaration of spiritual posture.">
+  <meta name="twitter:image" content="https://amoph.org/images/og-images/amoph-blog-og-image.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="icon" type="image/png" href="/images/favicon.png?v=1">
+
+  <style>
+    /* ── Post-specific layout ── */
+
+    /* Hero: taller, with optional thumbnail overlay */
+    .post-hero {
+      min-height: 48vh;
+      display: flex;
+      align-items: flex-end;
+      padding: calc(var(--nav-height) + 5rem) var(--space-md) var(--space-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(139,0,0,0.18) 0%, rgba(11,11,11,0.95) 100%);
+      z-index: 0;
+    }
+
+    /* Optional: set a background-image on .post-hero__thumb via JS or inline style */
+    .post-hero__thumb {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.12;
+      z-index: 0;
+    }
+
+    /* Bottom accent */
+    .post-hero__bg::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(
+        to right,
+        var(--clr-crimson-deep),
+        var(--clr-crimson) 40%,
+        var(--clr-gold) 50%,
+        var(--clr-crimson) 60%,
+        var(--clr-crimson-deep)
+      );
+    }
+
+    .post-hero__inner {
+      max-width: 860px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-hero__date {
+      font-family: var(--font-label);
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--clr-gold);
+      text-transform: uppercase;
+      margin-bottom: var(--space-sm);
+      display: block;
+    }
+
+    .post-hero__title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      line-height: 1.15;
+      color: var(--clr-ivory);
+      margin-bottom: 1.5rem;
+    }
+
+    .post-hero__desc {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: rgba(245,240,228,0.62);
+      margin: 0 0 1.5rem;
+      max-width: 640px;
+    }
+
+    /* Share bar */
+    .post-share-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .post-share-bar__label {
+      font-family: var(--font-label);
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      color: rgba(201,166,70,0.5);
+      text-transform: uppercase;
+      margin-right: 0.25rem;
+    }
+
+    .post-share-btn {
+      background: none;
+      border: 1px solid rgba(201,166,70,0.25);
+      color: rgba(245,240,228,0.6);
+      font-family: var(--font-label);
+      font-size: 0.52rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.85rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .post-share-btn:hover {
+      border-color: var(--clr-gold);
+      color: var(--clr-gold);
+      background: rgba(201,166,70,0.07);
+    }
+
+    .post-share-btn--copied {
+      color: #7dc98f;
+      border-color: #7dc98f;
+    }
+
+    /* Two-column post layout */
+    .post-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: var(--space-lg);
+      align-items: start;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Post body typography */
+    .post-body {
+      padding: var(--space-xl) 0;
+    }
+
+    /* Post pagination */
+    .post-pagination {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      margin-top: var(--space-lg);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--border-subtle);
+      gap: var(--space-sm);
+    }
+
+    .post-nav-btn {
+      font-family: var(--font-label);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--clr-gold);
+      background: none;
+      border: 1px solid var(--border-gold);
+      padding: 0.75rem 1.25rem;
+      cursor: pointer;
+      transition: all var(--transition-med);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      max-width: 46%;
+    }
+
+    .post-nav-btn:hover {
+      background: rgba(201,166,70,0.07);
+      border-color: var(--clr-gold);
+    }
+
+    .post-nav-btn--disabled {
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    .post-nav-btn__label {
+      font-size: 0.5rem;
+      opacity: 0.5;
+      letter-spacing: 0.3em;
+    }
+
+    .post-nav-btn__title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--clr-ivory);
+      letter-spacing: 0;
+      text-transform: none;
+      line-height: 1.3;
+    }
+
+    .post-nav-btn--next { text-align: right; }
+
+    /* Bottom share section */
+    .post-share-section {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: var(--space-lg);
+      margin-top: var(--space-lg);
+    }
+
+    .post-share-section__title {
+      font-family: var(--font-label);
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--clr-gold);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    /* Sidebar: sticky on desktop */
+    .post-sidebar {
+      position: sticky;
+      top: calc(var(--nav-height) + 2rem);
+      padding-top: var(--space-xl);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .post-hero {
+        padding: calc(var(--nav-height) + 3rem) 1.5rem var(--space-md);
+      }
+
+      .post-layout {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem;
+      }
+
+      .post-sidebar {
+        position: static;
+        padding-top: 0;
+        order: -1;
+      }
+
+      .post-body { padding: var(--space-lg) 0; }
+
+      .post-nav-btn { max-width: 48%; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="site-header"></div>
+
+  <!-- ── Post Hero ── -->
+  <div class="post-hero">
+    <div class="post-hero__bg" aria-hidden="true"></div>
+    <!-- Optional thumbnail: <img class="post-hero__thumb" src="/images/blog/post-thumbnail.jpg" alt=""> -->
+
+    <div class="post-hero__inner">
+
+      <!-- Back link -->
+      <a class="back-link" href="/blog.html">Back to Journal</a>
+
+      <span class="post-hero__date">March 2025 · Doctrine</span>
+
+      <h1 class="post-hero__title">
+        What is the <em>Unknown Philosopher?</em>
+      </h1>
+
+      <p class="post-hero__desc">
+        Saint-Martin chose his pen name with care — not a mask of anonymity, but a declaration
+        of spiritual posture.
+      </p>
+
+      <!-- Share bar -->
+      <div class="post-share-bar" aria-label="Share options">
+        <span class="post-share-bar__label">Share</span>
+        <button class="post-share-btn" id="share-copy" onclick="copyPostLink(this)">
+          Copy Link
+        </button>
+        <a class="post-share-btn"
+           href="https://www.facebook.com/sharer/sharer.php?u=https://amoph.org/blog-post.html"
+           target="_blank" rel="noopener noreferrer">
+          Facebook
+        </a>
+        <a class="post-share-btn"
+           href="https://twitter.com/intent/tweet?url=https://amoph.org/blog-post.html&text=What+is+the+Unknown+Philosopher%3F"
+           target="_blank" rel="noopener noreferrer">
+          Twitter / X
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Post Layout ── -->
+  <main>
+    <div class="post-layout">
+
+      <!-- ── Post Body ── -->
+      <article class="post-body blog-post-content">
+
+        <p>
+          Louis-Claude de Saint-Martin published his most important works under a pen name:
+          <em>le Philosophe Inconnu</em> — the Unknown Philosopher. This was not, as is sometimes
+          assumed, a precaution against persecution. By the time Saint-Martin was writing, the
+          Revolutionary climate had shifted, and he faced no particular danger from his religious
+          views. The choice was deliberate, and it was theological.
+        </p>
+
+        <h2>The Meaning of Unknowing</h2>
+
+        <p>
+          To be "unknown" in the Martinist sense is not to be hidden from others — it is to be
+          hidden from oneself. The ego, the social personality, the accumulated mask of identity:
+          these are precisely what must be transcended on the path of inner reintegration.
+          The Unknown Philosopher is one who has ceased to identify with the known self.
+        </p>
+
+        <p>
+          This is the mystical dimension of the name. But there is also a social dimension.
+          Saint-Martin was writing in opposition to a particular kind of esoteric vanity — the
+          tendency of spiritual seekers to seek recognition, rank, and public acknowledgment of
+          their attainment. The Unknown Philosopher works without that incentive. The work is
+          its own reward.
+        </p>
+
+        <blockquote>
+          <p>
+            "The wise man does not need to display his wisdom; he shows it only in the quality
+            of his life and the depth of his silence."
+          </p>
+        </blockquote>
+
+        <h2>The Path of the Heart</h2>
+
+        <p>
+          Saint-Martin's spiritual path — <em>la voie du coeur</em>, the way of the heart —
+          was distinguished from the operative-theurgical approach of his teacher, Martínez de
+          Pasqually. Where Pasqually worked with elaborate ritual ceremonies aimed at obtaining
+          tangible spiritual results, Saint-Martin turned the attention entirely inward.
+        </p>
+
+        <p>
+          The heart, for Saint-Martin, was not merely the seat of emotion. It was the organ of
+          spiritual perception — the point of contact between the human soul and the divine
+          reality from which it had fallen. To cultivate the heart was to cultivate this contact,
+          to open a channel through which divine light could flow back into the fallen being.
+        </p>
+
+        <h2>Why the Title Endures</h2>
+
+        <p>
+          In the Martinist degrees, the title "Unknown Philosopher" is conferred upon those who
+          receive the third and highest degree of initiation. It is not a rank in any social
+          sense — the Unknown Philosopher has no special privileges within the Order, no elevated
+          seat, no additional authority. The title is a reminder: that the inner work has no
+          visible completion, that the philosopher remains always unknown, always becoming.
+        </p>
+
+        <p>
+          This is perhaps the most radical aspect of the Martinist vision. In most esoteric
+          systems, advancement is visible. In Martinism, at its peak, it disappears. The most
+          advanced initiate is the one who is least identifiable as such.
+        </p>
+
+        <hr>
+
+        <!-- Bottom share -->
+        <div class="post-share-section">
+          <span class="post-share-section__title">Share this article</span>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="post-share-btn" onclick="copyPostLink(this)">Copy Link</button>
+            <a class="post-share-btn"
+               href="https://www.facebook.com/sharer/sharer.php?u=https://amoph.org/blog-post.html"
+               target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="post-share-btn"
+               href="https://twitter.com/intent/tweet?url=https://amoph.org/blog-post.html"
+               target="_blank" rel="noopener noreferrer">Twitter / X</a>
+          </div>
+        </div>
+
+        <!-- Post pagination -->
+        <nav class="post-pagination" aria-label="Post navigation">
+          <span class="post-nav-btn post-nav-btn--disabled" aria-hidden="true">
+            <span class="post-nav-btn__label">← Previous</span>
+            <span class="post-nav-btn__title">No previous post</span>
+          </span>
+
+          <a class="post-nav-btn post-nav-btn--next" href="/blog-post.html">
+            <span class="post-nav-btn__label">Next →</span>
+            <span class="post-nav-btn__title">Why Physical Initiation Cannot Be Replaced</span>
+          </a>
+        </nav>
+
+      </article>
+
+      <!-- ── Sidebar ── -->
+      <aside class="post-sidebar" aria-label="Post sidebar">
+
+        <!-- About the Journal -->
+        <div class="sidebar-widget">
+          <h3 class="sidebar-widget__title">The Martinist Journal</h3>
+          <p style="font-size: 0.88rem; color: rgba(245,240,228,0.58); line-height: 1.65; margin: 0;">
+            Writings on Martinism, Western esotericism, and the inner life. Published by the
+            Ancient Martinist Order Philippines.
+          </p>
+        </div>
+
+        <!-- Related Posts -->
+        <div class="sidebar-widget">
+          <h3 class="sidebar-widget__title">Related Articles</h3>
+          <ul>
+            <li><a href="/blog-post.html">Why Physical Initiation Cannot Be Replaced</a></li>
+            <li><a href="/blog-post.html">Martinism &amp; the Russian Soul</a></li>
+            <li><a href="/blog-post.html">Reintegration: The Central Teaching</a></li>
+          </ul>
+        </div>
+
+        <!-- CTA -->
+        <div class="sidebar-widget" style="text-align: center;">
+          <h3 class="sidebar-widget__title">Answer the Call</h3>
+          <p style="font-size: 0.88rem; color: rgba(245,240,228,0.58); margin-bottom: 1.2rem; line-height: 1.6;">
+            Initiation is free, personal, and available to sincere seekers in the Philippines.
+          </p>
+          <a href="/membership.html" class="btn-primary" style="width: 100%; text-align: center;">
+            Learn More
+          </a>
+        </div>
+
+      </aside>
+
+    </div><!-- /.post-layout -->
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/js/script.js"></script>
+  <script src="/js/chat.js"></script>
+
+  <script>
+    /**
+     * Copy the current page URL to clipboard and show feedback.
+     * @param {HTMLElement} btn
+     */
+    function copyPostLink(btn) {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.classList.add('post-share-btn--copied');
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.classList.remove('post-share-btn--copied');
+        }, 2000);
+      }).catch(() => {
+        // Fallback for browsers that don't support clipboard API
+        btn.textContent = 'Copy failed';
+        setTimeout(() => { btn.textContent = 'Copy Link'; }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
