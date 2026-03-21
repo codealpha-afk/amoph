@@ -11,7 +11,7 @@ function toggleMobileNav() {
 
   var isOpen = nav.classList.contains('open');
 
-  document.body.classList.toggle('nav-opne');
+  document.body.classList.toggle('nav-open');
 
   if (isOpen) {
     nav.classList.remove('open');
@@ -47,14 +47,30 @@ document.addEventListener('keydown', function (e) {
 document.addEventListener('DOMContentLoaded', function () {
 
   // ─── LOAD HEADER ─────────────────────────────
-  fetch('/header.html')
-    .then(res => res.text())
-    .then(data => {
-      var header = document.getElementById('site-header');
-      if (header) header.innerHTML = data;
-    })
-    .catch(err => console.error('Header error:', err));
+fetch('/header.html')
+  .then(res => res.text())
+  .then(data => {
+    var header = document.getElementById('site-header');
+    if (header) header.innerHTML = data;
 
+    // ✅ NOW hamburger exists
+    var hamburger = document.getElementById('hamburger');
+
+    if (hamburger) {
+      hamburger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleMobileNav();
+      });
+
+      hamburger.addEventListener('touchend', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMobileNav();
+      });
+    }
+  })
+  .catch(err => console.error('Header error:', err));
+  
   // ─── LOAD FOOTER ─────────────────────────────
   fetch('/footer.html')
     .then(res => res.text())
@@ -68,20 +84,29 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .catch(err => console.error('Footer error:', err));
 
-  // ─── HAMBURGER BUTTON ────────────────────────
-  var hamburger = document.getElementById('hamburger');
-  if (hamburger) {
-    hamburger.addEventListener('click', function (e) {
-      e.stopPropagation();
-      toggleMobileNav();
-    });
+fetch('/header.html')
+  .then(res => res.text())
+  .then(data => {
+    var header = document.getElementById('site-header');
+    if (header) header.innerHTML = data;
 
-    hamburger.addEventListener('touchend', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      toggleMobileNav();
-    });
-  }
+    // ✅ NOW hamburger exists
+    var hamburger = document.getElementById('hamburger');
+
+    if (hamburger) {
+      hamburger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleMobileNav();
+      });
+
+      hamburger.addEventListener('touchend', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMobileNav();
+      });
+    }
+  })
+  .catch(err => console.error('Header error:', err));
 
   // ─── CLOSE NAV OUTSIDE CLICK ─────────────────
   document.addEventListener('click', function (e) {
