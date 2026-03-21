@@ -1,0 +1,54 @@
+<!-- ============================================================
+  AMOPH — Reusable Header Component
+  /components/header.html
+  
+  Injected into every page via js/script.js → loadComponent().
+  Active link is set dynamically by setActiveNavLink() in script.js.
+  
+  Usage in page HTML:
+    <div id="site-header"></div>
+============================================================ -->
+
+<header>
+  <nav class="site-nav" id="navbar" role="navigation" aria-label="Main navigation">
+
+    <!-- Logo / Brand -->
+    <a class="site-nav__logo" href="/index.html" aria-label="AMO Philippines — Home">
+      AMO · Philippines
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <ul class="site-nav__links" role="list">
+      <li><a href="/index.html"      id="nav-home">Home</a></li>
+      <li><a href="/about.html"      id="nav-about">About Us</a></li>
+      <li><a href="/history.html"    id="nav-history">History &amp; Lineage</a></li>
+      <li><a href="/membership.html" id="nav-membership">Membership</a></li>
+      <li><a href="/blog.html"       id="nav-blog">Blog</a></li>
+      <li><a href="/contact.html"    id="nav-contact">Contact</a></li>
+    </ul>
+
+    <!-- Mobile Hamburger Button -->
+    <button
+      class="site-nav__hamburger"
+      id="hamburger"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </nav>
+</header>
+
+<!-- Mobile Navigation Overlay -->
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="/index.html"      id="mnav-home"       onclick="closeMobileNav()">Home</a>
+  <a href="/about.html"      id="mnav-about"      onclick="closeMobileNav()">About Us</a>
+  <a href="/history.html"    id="mnav-history"    onclick="closeMobileNav()">History &amp; Lineage</a>
+  <a href="/membership.html" id="mnav-membership" onclick="closeMobileNav()">Membership</a>
+  <a href="/blog.html"       id="mnav-blog"       onclick="closeMobileNav()">Blog</a>
+  <a href="/contact.html"    id="mnav-contact"    onclick="closeMobileNav()">Contact</a>
+</nav>
