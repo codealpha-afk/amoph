@@ -105,16 +105,17 @@ body.nav-open{
 /* ─── HAMBURGER BUTTON ───────────────────── */
 
 .site-header__hamburger {
-  display: none; /* 👈 hidden by default (desktop) */
+  display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
   padding: 10px;
   background: none;
   border: none;
-    .site-header__hamburger span{
-        transition: all 0.3 ease;
-    }
+}
+
+.site-header__hamburger span {
+  transition: all 0.3s ease;
 }
 
 .site-header__hamburger span {
@@ -152,11 +153,11 @@ body.nav-open{
   align-items: center;
   justify-content: center;
   gap: 2.5rem;
-
-  /* 👇 THIS IS THE KEY FIX */
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+    
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale (0.98);
 
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
@@ -165,7 +166,7 @@ body.nav-open{
   opacity: 1;
   visibility: visible;
   pointer-events: all;
-transform: scale(1);
+    transform: scale(1);
 }
 
 .mobile-nav a {
