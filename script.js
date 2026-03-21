@@ -11,6 +11,8 @@ function toggleMobileNav() {
 
   var isOpen = nav.classList.contains('open');
 
+  document.body.classList.toggle('nav-opne');
+
   if (isOpen) {
     nav.classList.remove('open');
     hamburger.classList.remove('open');
@@ -32,6 +34,7 @@ function closeMobileNav() {
     hamburger.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
   }
+  document.body.classList.remove('nav-open');
 }
 
 // Close on Escape key
