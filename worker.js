@@ -70,32 +70,32 @@ const PAGE_META = {
   '/':           {
     title:       'AMOPH | Ancient Martinist Order Philippines',
     description: 'The Ancient Martinist Order Philippines (AMOPH) is an authentic initiatic fraternity transmitting the living Martinist tradition. Free initiation in Manila.',
-    image:       'https://amoph.org/images/og-images/amoph-homepage-og-image.jpg',
+    image:       'https://amoph.org/images/og-images/homepage.jpg',
   },
   '/about':      {
     title:       'Who We Are | Ancient Martinist Order Philippines',
     description: 'The AMO Philippines: A community dedicated to the Way of the Heart and Divine Reintegration.',
-    image:       'https://amoph.org/images/og-images/amoph-about-us-og-image.jpg',
+    image:       'https://amoph.org/images/og-images/about-us.jpg',
   },
   '/history':    {
     title:       'History & Lineage | Ancient Martinist Order Philippines',
     description: 'From 18th-century France to the Philippines. Explore our lineage and the Unknown Philosopher.',
-    image:       'https://amoph.org/images/og-images/amoph-history-og-image.jpg',
+    image:       'https://amoph.org/images/og-images/history.jpg',
   },
   '/membership': {
     title:       'Membership & Initiation | Ancient Martinist Order Philippines',
     description: 'Join the inner journey. Learn about affiliation and the sincere calling to the Martinist path.',
-    image:       'https://amoph.org/images/og-images/amoph-membership-og-image.jpg',
+    image:       'https://amoph.org/images/og-images/membership.jpg',
   },
   '/blog':       {
     title:       'The Martinist Journal | Ancient Martinist Order Philippines',
     description: 'Illuminated writings from the Ancient Martinist Order Philippines.',
-    image:       'https://amoph.org/images/og-images/amoph-blog-og-image.jpg',
+    image:       'https://amoph.org/images/og-images/blog.jpg',
   },
   '/contact':    {
     title:       'Connect With Us | Ancient Martinist Order Philippines',
     description: 'Answer the calling. Contact the AMO Philippines for inquiries regarding initiation.',
-    image:       'https://amoph.org/images/og-images/amoph-contact-us-og-image.jpg',
+    image:       'https://amoph.org/images/og-images/conact-us.jpg',
   },
 };
 
