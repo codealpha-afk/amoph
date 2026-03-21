@@ -40,133 +40,86 @@
     opacity: 0.4;
   }
 
-  /* ─── NAVIGATION ─── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 200;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.2rem 4rem;
-    background: linear-gradient(to bottom, rgba(13,12,10,0.97), rgba(13,12,10,0));
-    transition: background 0.4s;
-  }
+/* ─────────────────────────────────────────
+   CONNECT NEW HEADER TO EXISTING STYLES
+───────────────────────────────────────── */
 
-  nav.scrolled {
-    background: rgba(13,12,10,0.98);
-    border-bottom: 1px solid rgba(176,184,193,0.2);
-  }
+/* Header container */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 4rem;
+  background: linear-gradient(to bottom, rgba(13,12,10,0.97), rgba(13,12,10,0));
+  transition: background 0.4s;
+}
 
-  .nav-logo {
-    font-family: 'Cinzel', serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.25em;
-    color: var(--gold);
-    text-transform: uppercase;
-    text-decoration: none;
-    cursor: pointer;
-  }
+/* Logo */
+.site-header__logo {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-decoration: none;
+}
 
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
+/* Links container */
+.site-header__links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
 
-  .nav-links a {
-    font-family: 'Cinzel', serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    color: var(--parchment);
-    text-decoration: none;
-    text-transform: uppercase;
-    opacity: 0.75;
-    transition: opacity 0.3s, color 0.3s;
-    cursor: pointer;
-  }
+/* Links */
+.site-header__links a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--parchment);
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0.75;
+  transition: opacity 0.3s, color 0.3s;
+}
 
-  .nav-links a:hover { opacity: 1; color: var(--gold); }
+.site-header__links a:hover {
+  opacity: 1;
+  color: var(--gold);
+}
 
-  .nav-links a.active {
-    opacity: 1;
-    color: var(--parchment);
-  }
+/* ─────────────────────────────────────────
+   FIX FOOTER (your class mismatch)
+───────────────────────────────────────── */
 
-  .nav-links a.active::after {
-    content: '';
-    display: block;
-    height: 1px;
-    background: var(--accent);
-    margin-top: 3px;
-  }
+.site-footer__links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-  /* Hamburger */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 10px;
-    position: relative;
-    z-index: 200;
-    min-width: 44px;
-    min-height: 44px;
-    align-items: center;
-    justify-content: center;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-    -webkit-user-select: none;
-  }
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--gold);
-    transition: all 0.3s;
-    pointer-events: none;
-  }
-  .hamburger:active { opacity: 0.7; }
-  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.site-footer__links a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: rgba(245,240,232,0.4);
+  text-decoration: none;
+  text-transform: uppercase;
+}
 
-  /* Mobile nav overlay */
-  .mobile-nav {
-    display: flex;
-    position: fixed;
-    inset: 0;
-    background: rgba(13,12,10,0.98);
-    z-index: 190;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2.5rem;
-    /* Hidden by default — smooth opacity/visibility transition */
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-  .mobile-nav.open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: all;
-  }
-  .mobile-nav a {
-    font-family: 'Cinzel', serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.3em;
-    color: var(--parchment);
-    text-decoration: none;
-    text-transform: uppercase;
-    opacity: 0.75;
-    cursor: pointer;
-    transition: color 0.3s, opacity 0.3s;
-  }
-  .mobile-nav a:hover { color: var(--gold); opacity: 1; }
-  .mobile-nav a.active { color: var(--parchment); opacity: 1; }
+.site-footer__links a:hover {
+  color: var(--gold);
+}
+
+/* Remove default blue links globally */
+a {
+  color: inherit;
+}
 
   /* ─── PAGE SYSTEM ─── */
   .page { display: block; }
