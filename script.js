@@ -11,6 +11,7 @@ function toggleMobileNav() {
 
   var isOpen = nav.classList.contains('open');
 
+  // ✅ correct class name
   document.body.classList.toggle('nav-open');
 
   if (isOpen) {
@@ -34,6 +35,7 @@ function closeMobileNav() {
     hamburger.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
   }
+
   document.body.classList.remove('nav-open');
 }
 
@@ -47,30 +49,30 @@ document.addEventListener('keydown', function (e) {
 document.addEventListener('DOMContentLoaded', function () {
 
   // ─── LOAD HEADER ─────────────────────────────
-fetch('/header.html')
-  .then(res => res.text())
-  .then(data => {
-    var header = document.getElementById('site-header');
-    if (header) header.innerHTML = data;
+  fetch('/header.html')
+    .then(res => res.text())
+    .then(data => {
+      var header = document.getElementById('site-header');
+      if (header) header.innerHTML = data;
 
-    // ✅ NOW hamburger exists
-    var hamburger = document.getElementById('hamburger');
+      // ✅ Bind hamburger AFTER header loads
+      var hamburger = document.getElementById('hamburger');
 
-    if (hamburger) {
-      hamburger.addEventListener('click', function (e) {
-        e.stopPropagation();
-        toggleMobileNav();
-      });
+      if (hamburger) {
+        hamburger.addEventListener('click', function (e) {
+          e.stopPropagation();
+          toggleMobileNav();
+        });
 
-      hamburger.addEventListener('touchend', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        toggleMobileNav();
-      });
-    }
-  })
-  .catch(err => console.error('Header error:', err));
-  
+        hamburger.addEventListener('touchend', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleMobileNav();
+        });
+      }
+    })
+    .catch(err => console.error('Header error:', err));
+
   // ─── LOAD FOOTER ─────────────────────────────
   fetch('/footer.html')
     .then(res => res.text())
@@ -83,30 +85,6 @@ fetch('/header.html')
       if (yearEl) yearEl.textContent = new Date().getFullYear();
     })
     .catch(err => console.error('Footer error:', err));
-
-fetch('/header.html')
-  .then(res => res.text())
-  .then(data => {
-    var header = document.getElementById('site-header');
-    if (header) header.innerHTML = data;
-
-    // ✅ NOW hamburger exists
-    var hamburger = document.getElementById('hamburger');
-
-    if (hamburger) {
-      hamburger.addEventListener('click', function (e) {
-        e.stopPropagation();
-        toggleMobileNav();
-      });
-
-      hamburger.addEventListener('touchend', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        toggleMobileNav();
-      });
-    }
-  })
-  .catch(err => console.error('Header error:', err));
 
   // ─── CLOSE NAV OUTSIDE CLICK ─────────────────
   document.addEventListener('click', function (e) {
@@ -121,12 +99,12 @@ fetch('/header.html')
   });
 
   // ─── NAVBAR SCROLL EFFECT ────────────────────
-  var navbar = document.getElementById('navbar');
-  if (navbar) {
-    window.addEventListener('scroll', function () {
+  window.addEventListener('scroll', function () {
+    var navbar = document.getElementById('navbar');
+    if (navbar) {
       navbar.classList.toggle('scrolled', window.scrollY > 50);
-    });
-  }
+    }
+  });
 
   // ─── EMAIL OBFUSCATION ───────────────────────
   (function () {
