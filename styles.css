@@ -69,7 +69,6 @@ body.nav-open{
 }
 
 /* Logo */
-/* Logo */
 .site-header__logo {
   display: flex;
   align-items: center;
@@ -81,6 +80,11 @@ body.nav-open{
   color: var(--gold);
   text-transform: uppercase;
   text-decoration: none;
+}
+
+.site-header__logo span {
+  position: relative;
+  top: 1px; /* adjust: 1px or -1px until perfect */
 }
 
 /* Mini logo icon */
