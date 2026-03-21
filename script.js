@@ -1,10 +1,5 @@
 // =============================================================
 //  AMOPH · script.js
-//  Responsibilities:
-//    - Mobile nav toggle / close
-//    - Navbar scroll effect
-//    - Footer year (dynamic)
-//    - Email obfuscation (anti-scraping)
 // =============================================================
 
 // ─── MOBILE NAV ──────────────────────────────────────────────
@@ -13,7 +8,9 @@ function toggleMobileNav() {
   var nav = document.getElementById('mobile-nav');
   var hamburger = document.getElementById('hamburger');
   if (!nav || !hamburger) return;
+
   var isOpen = nav.classList.contains('open');
+
   if (isOpen) {
     nav.classList.remove('open');
     hamburger.classList.remove('open');
@@ -28,7 +25,9 @@ function toggleMobileNav() {
 function closeMobileNav() {
   var nav = document.getElementById('mobile-nav');
   var hamburger = document.getElementById('hamburger');
+
   if (nav) nav.classList.remove('open');
+
   if (hamburger) {
     hamburger.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
@@ -42,77 +41,38 @@ document.addEventListener('keydown', function (e) {
 
 // ─── DOM READY ───────────────────────────────────────────────
 
-// ─── LOAD HEADER ─────────────────────────────
-fetch('/header')
-  .then(res => res.text())
-  .then(data => {
-    var header = document.getElementById('site-header');
-    if (header) header.innerHTML = data;
-  })
-  .catch(err => console.error('Header error:', err));
-
-// ─── LOAD FOOTER ─────────────────────────────
-fetch('/footer')
-  .then(res => res.text())
-  .then(data => {
-    var footer = document.getElementById('site-footer');
-    if (footer) footer.innerHTML = data;
-  })
-  .catch(err => console.error('Footer error:', err));
-
-<!-- ============================================================
-  AMOPH — Reusable Footer Component
-  /components/footer.html
-  
-  Injected into every page via js/script.js → loadComponent().
-  
-  Usage in page HTML:
-    <div id="site-footer"></div>
-  (place at the very end of <body>, before closing </body>)
-============================================================ -->
-
-<footer class="site-footer" role="contentinfo">
-
-  <img class="footer-emblem" src="/images/logos/logo-footer.png" alt="Ancient Martinist Order Emblem">
-  <span class="site-footer__name">Ancient Martinist Order — Philippines</span>
-  <span class="site-footer__tagline">Pax ✦ Lux ✦ Veritas</span>
-
-  <div class="site-footer__divider" role="separator"></div>
-
-  <!-- Footer Navigation -->
-  <nav aria-label="Footer navigation">
-    <ul class="site-footer__links" role="list">
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/history.html">History &amp; Lineage</a></li>
-      <li><a href="/membership.html">Membership</a></li>
-      <li><a href="/blog.html">Blog</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-    </ul>
-  </nav>
-
-  <p class="site-footer__copy">
-    © <span id="footer-year">2026</span> Ancient Martinist Order – Philippines
-    · <a href="https://amoph.org" style="color:inherit;">amoph.org</a>
-    · All rights reserved.
-  </p>
-
-</footer>
-
-<script>
-  // Update copyright year dynamically
-  var yearEl = document.getElementById('footer-year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
-</script>
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Hamburger button
+  // ─── LOAD HEADER ─────────────────────────────
+  fetch('/header.html')
+    .then(res => res.text())
+    .then(data => {
+      var header = document.getElementById('site-header');
+      if (header) header.innerHTML = data;
+    })
+    .catch(err => console.error('Header error:', err));
+
+  // ─── LOAD FOOTER ─────────────────────────────
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(data => {
+      var footer = document.getElementById('site-footer');
+      if (footer) footer.innerHTML = data;
+
+      // Fix footer year AFTER injection
+      var yearEl = document.getElementById('footer-year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    })
+    .catch(err => console.error('Footer error:', err));
+
+  // ─── HAMBURGER BUTTON ────────────────────────
   var hamburger = document.getElementById('hamburger');
   if (hamburger) {
     hamburger.addEventListener('click', function (e) {
       e.stopPropagation();
       toggleMobileNav();
     });
+
     hamburger.addEventListener('touchend', function (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -120,10 +80,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Close nav when clicking outside
+  // ─── CLOSE NAV OUTSIDE CLICK ─────────────────
   document.addEventListener('click', function (e) {
     var nav = document.getElementById('mobile-nav');
     var hb  = document.getElementById('hamburger');
+
     if (nav && nav.classList.contains('open')) {
       if (!nav.contains(e.target) && hb && !hb.contains(e.target)) {
         closeMobileNav();
@@ -131,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Navbar scroll effect
+  // ─── NAVBAR SCROLL EFFECT ────────────────────
   var navbar = document.getElementById('navbar');
   if (navbar) {
     window.addEventListener('scroll', function () {
@@ -139,22 +100,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // ─── FOOTER YEAR ─────────────────────────────────────────
-  var yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // ─── EMAIL OBFUSCATION ───────────────────────────────────
-  // Builds the contact email at runtime to prevent server-side scraping.
+  // ─── EMAIL OBFUSCATION ───────────────────────
   (function () {
     var u = 'contact';
     var d = 'amoph.org';
     var e = u + '@' + d;
+
     var href =
       'mailto:' + e +
       '?subject=Petition%20for%20Admission%2FInquiry%3A%20%5BYour%20Full%20Name%5D' +
       '&body=Name%3A%20%0ALocation%3A%20%0A%0AMessage%3A%20Share%20a%20little%20about%20yourself%20and%20what%20draws%20you%20to%20the%20Martinist%20Path%E2%80%A6';
 
-    // Inline email display spans: id="em1", "em2", "em3"
     for (var i = 1; i <= 3; i++) {
       var el = document.getElementById('em' + i);
       if (el) {
@@ -166,7 +122,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // Email CTA buttons: id="embtn1", "embtn2"
     var btn1 = document.getElementById('embtn1');
     if (btn1) btn1.href = href;
 
