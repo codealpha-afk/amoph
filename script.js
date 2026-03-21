@@ -42,6 +42,68 @@ document.addEventListener('keydown', function (e) {
 
 // ─── DOM READY ───────────────────────────────────────────────
 
+// ─── LOAD HEADER ─────────────────────────────
+fetch('/header')
+  .then(res => res.text())
+  .then(data => {
+    var header = document.getElementById('site-header');
+    if (header) header.innerHTML = data;
+  })
+  .catch(err => console.error('Header error:', err));
+
+// ─── LOAD FOOTER ─────────────────────────────
+fetch('/footer')
+  .then(res => res.text())
+  .then(data => {
+    var footer = document.getElementById('site-footer');
+    if (footer) footer.innerHTML = data;
+  })
+  .catch(err => console.error('Footer error:', err));
+
+<!-- ============================================================
+  AMOPH — Reusable Footer Component
+  /components/footer.html
+  
+  Injected into every page via js/script.js → loadComponent().
+  
+  Usage in page HTML:
+    <div id="site-footer"></div>
+  (place at the very end of <body>, before closing </body>)
+============================================================ -->
+
+<footer class="site-footer" role="contentinfo">
+
+  <img class="footer-emblem" src="/images/logos/logo-footer.png" alt="Ancient Martinist Order Emblem">
+  <span class="site-footer__name">Ancient Martinist Order — Philippines</span>
+  <span class="site-footer__tagline">Pax ✦ Lux ✦ Veritas</span>
+
+  <div class="site-footer__divider" role="separator"></div>
+
+  <!-- Footer Navigation -->
+  <nav aria-label="Footer navigation">
+    <ul class="site-footer__links" role="list">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/history.html">History &amp; Lineage</a></li>
+      <li><a href="/membership.html">Membership</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <p class="site-footer__copy">
+    © <span id="footer-year">2026</span> Ancient Martinist Order – Philippines
+    · <a href="https://amoph.org" style="color:inherit;">amoph.org</a>
+    · All rights reserved.
+  </p>
+
+</footer>
+
+<script>
+  // Update copyright year dynamically
+  var yearEl = document.getElementById('footer-year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
 document.addEventListener('DOMContentLoaded', function () {
 
   // Hamburger button
