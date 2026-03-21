@@ -3,5 +3,5 @@ main = "worker.js"
 compatibility_date = "2024-01-01"
 
 [[routes]]
-pattern = "amoph.org/*"
-custom_domain = true
+pattern = "temp-ee1.pages.dev/*"
+custom_domain = false
