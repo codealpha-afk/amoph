@@ -238,6 +238,14 @@ a {
 
   /* ─── PAGE SYSTEM ─── */
   .page { display: block; }
+
+/* ─── TWO COLUMN LAYOUT ─── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
   
 
   /* ─── HERO ─── */
