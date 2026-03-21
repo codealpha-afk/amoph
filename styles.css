@@ -26,9 +26,18 @@
     color: var(--parchment);
   }
 
+/*Lock scroll when mobile menu is open*/
+body.nav-open{
+    overflow: hidden;
+}
+
   /* ─── ALTERNATE SECTION BACKGROUNDS ─── */
-  .pillars { background: var(--ink2); }
-  .hero-quote-section { background: var(--ink3); }
+  .pillars { 
+      background: var(--ink2); 
+  }
+.hero-quote-section { 
+    background: var(--ink3); 
+    }
 
   body::before {
     content: '';
