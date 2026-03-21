@@ -95,7 +95,7 @@ const PAGE_META = {
   '/contact':    {
     title:       'Connect With Us | Ancient Martinist Order Philippines',
     description: 'Answer the calling. Contact the AMO Philippines for inquiries regarding initiation.',
-    image:       'https://amoph.org/images/og-images/conact-us.jpg',
+    image:       'https://amoph.org/images/og-images/contact-us.jpg',
   },
 };
 
