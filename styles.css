@@ -81,6 +81,10 @@ body.nav-open{
   text-transform: uppercase;
   text-decoration: none;
 }
+.site-header__logo img {
+    height: 34px;
+    width: auto;
+}
 
 .site-header__logo span {
   position: relative;
@@ -92,7 +96,7 @@ body.nav-open{
   width: 26px;
   height: 26px;
   object-fit: contain;
-  mix-blend-mode: lighten;
+  mix-blend-mode: normal;
   opacity: 0.9;
 }
 
