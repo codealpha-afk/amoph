@@ -1,21 +1,16 @@
-media:
-  input: src/images/blog
-  output: /images/blog
-
-content:
+collections:
   - name: posts
     label: Blog Posts
-    type: collection
     path: src/posts
-    filename: "{fields.slug}.md"
-    view:
-      fields: [title, date, category]
     fields:
       - name: title
         label: Title
         type: string
-      - name: slug
-        label: URL Slug
+      - name: excerpt
+        label: Excerpt
+        type: string
+      - name: description
+        label: Meta Description
         type: string
       - name: date
         label: Date
@@ -24,25 +19,17 @@ content:
         label: Category
         type: select
         options:
-          values:
-            - label: Doctrine
-              value: Doctrine
-            - label: Initiation
-              value: Initiation
-            - label: History
-              value: History
-            - label: Practice
-              value: Practice
-            - label: Philippines
-              value: Philippines
-            - label: Western Esotericism
-              value: Western Esotericism
-      - name: description
-        label: Meta Description
+          - Doctrine
+          - Initiation
+          - History
+          - Practice
+          - Philippines
+          - Western Esotericism
+      - name: tags
+        label: Tags
         type: string
-      - name: excerpt
-        label: Excerpt
+        default: posts
+      - name: layout
+        label: Layout
         type: string
-      - name: body
-        label: Content
-        type: rich-text
+        default: layouts/post.njk
