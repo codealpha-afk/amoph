@@ -40,7 +40,7 @@ const NAV_HTML = `
 const FOOTER_HTML = `
 <!-- ═══ FOOTER ═══ -->
 <footer>
-  <img class="footer-emblem" src="/images/amo_footer_emblem.png" alt="Ancient Martinist Order Emblem">
+  <img class="footer-emblem" src="/images/logos/logo-footer.png" alt="Ancient Martinist Order Emblem">
   <span class="footer-name">Ancient Martinist Order — Philippines</span>
   <span class="footer-tagline">Pax ✦ Lux ✦ Veritas</span>
   <ul class="footer-links">
