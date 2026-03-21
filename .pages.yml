@@ -20,7 +20,14 @@ content:
         type: date
       - name: category
         label: Category
-        type: string
+        type: select
+        choices:
+          - Doctrine
+          - Initiation
+          - History
+          - Practice
+          - Philippines
+          - Western Esotericism
       - name: description
         label: Meta Description
         type: string
