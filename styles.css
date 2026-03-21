@@ -990,3 +990,49 @@ a {
     .degrees-grid { grid-template-columns: 1fr; }
     .callout { padding: 1rem 1.2rem; }
   }
+
+@media print {
+
+  /* Reset everything */
+  body {
+    background: white !important;
+    color: black !important;
+    font-family: Georgia, serif;
+  }
+
+  /* Hide website-only elements */
+  .site-header,
+  .site-header__links,
+  .site-header__hamburger,
+  .mobile-nav,
+  footer {
+    display: none !important;
+  }
+
+  /* Clean content layout */
+  .content-area {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* Typography for readability */
+  h1, h2, h3 {
+    color: black;
+    page-break-after: avoid;
+  }
+
+  p {
+    color: black;
+    font-size: 12pt;
+    line-height: 1.6;
+  }
+
+  /* Remove fancy effects */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    background: none !important;
+  }
+
+}
