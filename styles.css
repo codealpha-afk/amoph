@@ -29,6 +29,7 @@
 /*Lock scroll when mobile menu is open*/
 body.nav-open{
     overflow: hidden;
+    height: 100vh;
 }
 
   /* ─── ALTERNATE SECTION BACKGROUNDS ─── */
