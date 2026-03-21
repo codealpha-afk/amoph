@@ -101,7 +101,9 @@
   padding: 10px;
   background: none;
   border: none;
-    .site-header__hamburger span
+    .site-header__hamburger span{
+        transition: all 0.3 ease;
+    }
 }
 
 .site-header__hamburger span {
