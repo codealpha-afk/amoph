@@ -1,5 +1,5 @@
 ---
-title: "Why Physical Initiation Cannot Be Replaced "
+title: Why Physical Initiation Cannot Be Replaced
 slug: why-physical-initiation-cannot-be-replaced
 date: 2025-03-22
 category: Initiation
@@ -11,6 +11,8 @@ excerpt: The internet can deliver knowledge, but it cannot deliver a spark. This
   essay explores why the sacred act of initiation — the transmission of a living
   current through physical presence — cannot be replicated by any screen,
   however well-intentioned.
+tags: posts
+layout: layouts/post.njk
 ---
 *In an age that promises to digitize everything, the sacred retains its ancient stubbornness.*
 
