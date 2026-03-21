@@ -1,0 +1,35 @@
+media:
+  input: images/uploads
+  output: /images/uploads
+  
+content:
+  - name: posts
+    label: Blog Posts
+    path: _posts
+    type: collection
+    view:
+      fields: [title, date, draft]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        options:
+          format: yyyy-MM-dd
+      - name: description
+        label: Description
+        type: string
+      - name: thumbnail
+        label: Thumbnail
+        type: image
+        required: false
+      - name: draft
+        label: Draft
+        type: boolean
+        default: false
+      - name: body
+        label: Content
+        type: rich-text

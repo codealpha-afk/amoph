@@ -1,0 +1,7 @@
+# Prevent the .pages.dev preview URL from being indexed by search engines
+https://amoph.pages.dev/*
+  X-Robots-Tag: noindex, nofollow
+
+# Ensure the main domain allows indexing
+https://amoph.org/*
+  X-Robots-Tag: index, follow
