@@ -1,0 +1,7 @@
+name = "amoph-seo-handler"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+[[routes]]
+pattern = "amoph.org/*"
+custom_domain = true
