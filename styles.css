@@ -842,9 +842,9 @@ a {
   /* ─── RESPONSIVE ─── */
 
   @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
+    .site-header { padding: 1rem 1.5rem; }
+    .site-header__links { display: none; }
+    .site-header__hamburger { display: flex; }
     .pillars { grid-template-columns: 1fr; }
     .pillar { border-right: none; border-bottom: 1px solid rgba(176,184,193,0.2); }
     .two-col { grid-template-columns: 1fr; gap: 2rem; }
