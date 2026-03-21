@@ -1,5 +1,5 @@
 // =============================================================
-//  AMOPH · script.js
+//  AMOPH · script.js (FINAL CLEAN VERSION)
 // =============================================================
 
 // ─── MOBILE NAV ──────────────────────────────────────────────
@@ -11,7 +11,6 @@ function toggleMobileNav() {
 
   var isOpen = nav.classList.contains('open');
 
-  // ✅ correct class name
   document.body.classList.toggle('nav-open');
 
   if (isOpen) {
@@ -39,7 +38,7 @@ function closeMobileNav() {
   document.body.classList.remove('nav-open');
 }
 
-// Close on Escape key
+// Close on Escape
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') closeMobileNav();
 });
@@ -55,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var header = document.getElementById('site-header');
       if (header) header.innerHTML = data;
 
-      // ✅ Bind hamburger AFTER header loads
+      // HAMBURGER (after injection)
       var hamburger = document.getElementById('hamburger');
 
       if (hamburger) {
@@ -70,6 +69,21 @@ document.addEventListener('DOMContentLoaded', function () {
           toggleMobileNav();
         });
       }
+
+      // ACTIVE NAV
+      var path = window.location.pathname;
+
+      document.querySelectorAll('.site-header__links a').forEach(function(link) {
+        if (link.getAttribute('href') === path) {
+          link.classList.add('active');
+        }
+      });
+
+      // CLOSE MENU ON LINK CLICK
+      document.querySelectorAll('#mobile-nav a').forEach(function(link) {
+        link.addEventListener('click', closeMobileNav);
+      });
+
     })
     .catch(err => console.error('Header error:', err));
 
@@ -80,13 +94,12 @@ document.addEventListener('DOMContentLoaded', function () {
       var footer = document.getElementById('site-footer');
       if (footer) footer.innerHTML = data;
 
-      // Fix footer year AFTER injection
       var yearEl = document.getElementById('footer-year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
     })
     .catch(err => console.error('Footer error:', err));
 
-  // ─── CLOSE NAV OUTSIDE CLICK ─────────────────
+  // CLOSE NAV OUTSIDE CLICK
   document.addEventListener('click', function (e) {
     var nav = document.getElementById('mobile-nav');
     var hb  = document.getElementById('hamburger');
@@ -98,41 +111,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // ─── NAVBAR SCROLL EFFECT ────────────────────
+  // NAVBAR SCROLL EFFECT
   window.addEventListener('scroll', function () {
     var navbar = document.getElementById('navbar');
     if (navbar) {
       navbar.classList.toggle('scrolled', window.scrollY > 50);
     }
   });
-
-  // ─── EMAIL OBFUSCATION ───────────────────────
-  (function () {
-    var u = 'contact';
-    var d = 'amoph.org';
-    var e = u + '@' + d;
-
-    var href =
-      'mailto:' + e +
-      '?subject=Petition%20for%20Admission%2FInquiry%3A%20%5BYour%20Full%20Name%5D' +
-      '&body=Name%3A%20%0ALocation%3A%20%0A%0AMessage%3A%20Share%20a%20little%20about%20yourself%20and%20what%20draws%20you%20to%20the%20Martinist%20Path%E2%80%A6';
-
-    for (var i = 1; i <= 3; i++) {
-      var el = document.getElementById('em' + i);
-      if (el) {
-        var a = document.createElement('a');
-        a.href = 'mailto:' + e;
-        a.textContent = e;
-        a.style.color = 'inherit';
-        el.appendChild(a);
-      }
-    }
-
-    var btn1 = document.getElementById('embtn1');
-    if (btn1) btn1.href = href;
-
-    var btn2 = document.getElementById('embtn2');
-    if (btn2) btn2.href = href;
-  })();
 
 });
