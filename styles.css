@@ -91,6 +91,26 @@
   color: var(--gold);
 }
 
+/* ─── HAMBURGER BUTTON ───────────────────── */
+
+.site-header__hamburger {
+  display: none; /* 👈 hidden by default (desktop) */
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 10px;
+  background: none;
+  border: none;
+}
+
+.site-header__hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--gold);
+  transition: all 0.3s;
+}
+
 /* ─── MOBILE NAV FIX ───────────────────── */
 
 .mobile-nav {
