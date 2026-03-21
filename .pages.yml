@@ -1,0 +1,49 @@
+media:
+  input: src/images/blog
+  output: /images/blog
+
+content:
+  - name: posts
+    label: Blog Posts
+    type: collection
+    path: src/posts
+    filename: "{fields.slug}"
+    extension: md
+    view:
+      fields: [title, date, category]
+    fields:
+      - name: title
+        label: Title
+        type: string
+
+      - name: slug
+        label: "URL Slug (e.g. why-initiation-matters)"
+        type: string
+
+      - name: date
+        label: Date
+        type: date
+
+      - name: category
+        label: Category
+        type: select
+        options:
+          values:
+            - Doctrine
+            - Initiation
+            - History
+            - Practice
+            - Philippines
+            - Western Esotericism
+
+      - name: description
+        label: Meta Description
+        type: string
+
+      - name: excerpt
+        label: Excerpt (shown on blog listing)
+        type: string
+
+      - name: body
+        label: Content
+        type: rich-text
