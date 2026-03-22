@@ -525,8 +525,11 @@ a {
   }
 
   .section-block {
-    margin-bottom: 0;
+    margin-bottom: 5 rem;
   }
+.section-block:last-of-type {
+  margin-bottom: 2rem;
+}
 
   .section-label {
     font-family: 'Cinzel', serif;
@@ -955,30 +958,6 @@ a {
     font-size: 0.78rem;
     color: rgba(245,240,232,0.25);
   }
-
-  /* ─── BLOG ─── */
-  .blog-layout {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 5rem;
-    align-items: start;
-  }
-
-  .blog-card {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 2rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid rgba(176,184,193,0.1);
-    text-decoration: none;
-    color: inherit;
-    transition: background 0.3s;
-  }
-
-  .blog-card:first-child {
-    border-top: 1px solid rgba(176,184,193,0.1);
-  }
-
   .blog-card:hover { background: rgba(158,42,42,0.03); }
 
   .blog-card__meta { padding-top: 0.25rem; }
