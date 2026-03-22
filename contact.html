@@ -69,11 +69,12 @@
       box-sizing: border-box;
       transition: border-color 0.2s ease;
     }
-    .form-field:focus { border-color: rgba(212,180,131,0.45); }
+    .form-field:focus { border-color: rgba(176,184,193,0.45); }
     .form-field::placeholder { color: rgba(245,240,232,0.22); }
     select.form-field option { background: #1a1510; color: #f5f0e8; }
+    #contact-form label { color: var(--gold-dim, #6A7278); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; font-family: 'Cinzel', serif; }
 
-    .faq-list { max-width: 720px; }
+    .faq-list { max-width: 720px; margin: 0 auto; }
     .faq-item { border-top: 1px solid rgba(176,184,193,0.08); }
     .faq-item:last-child { border-bottom: 1px solid rgba(176,184,193,0.08); }
     .faq-question {
@@ -83,7 +84,7 @@
       font-family: 'Cinzel', serif;
       font-size: 0.88rem;
       letter-spacing: 0.03em;
-      color: var(--gold-light, #d4b483);
+      color: var(--gold-light, #D8DDE3);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -99,7 +100,7 @@
       margin-top: 0.85rem;
       padding: 0.65rem 1rem;
       background: rgba(176,184,193,0.05);
-      border-left: 2px solid rgba(212,180,131,0.3);
+      border-left: 2px solid rgba(158,42,42,0.4);
       color: rgba(245,240,232,0.5);
       font-size: 0.84rem;
       line-height: 1.6;
@@ -111,7 +112,7 @@
       padding: 1.5rem;
       background: rgba(176,184,193,0.05);
       border: 1px solid rgba(176,184,193,0.12);
-      border-left: 2px solid rgba(212,180,131,0.4);
+      border-left: 2px solid rgba(158,42,42,0.4);
       text-align: center;
     }
     .cooldown-msg p {
@@ -146,7 +147,7 @@
         <div style="margin-top:2.5rem;">
           <div style="display:flex; gap:1.5rem; padding:1rem 0; border-top:1px solid rgba(176,184,193,0.08);">
             <span class="minor-heading" style="min-width:80px; margin:0; padding-top:2px;">Email</span>
-            <a href="mailto:contact@amoph.org" style="color:var(--gold-light); text-decoration:none;">contact@amoph.org</a>
+            <a href="/cdn-cgi/l/email-protection#71121e1f0510120531101c1e01195f1e0316" style="color:var(--gold-light); text-decoration:none;"><span class="__cf_email__" data-cfemail="dfbcb0b1abbebcab9fbeb2b0afb7f1b0adb8">[email&#160;protected]</span></a>
           </div>
           <div style="display:flex; gap:1.5rem; padding:1rem 0; border-top:1px solid rgba(176,184,193,0.08);">
             <span class="minor-heading" style="min-width:80px; margin:0; padding-top:2px;">Facebook</span>
@@ -159,16 +160,16 @@
         </div>
 
         <!-- Facebook Widget -->
-        <div style="margin-top:2rem; max-width:340px;">
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(176,184,193,0.12); border-radius:4px; overflow:hidden;">
-            <div style="background:#1877F2; padding:12px 16px; display:flex; align-items:center; gap:10px;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.514c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-              <span style="color:white; font-family:'Cinzel',serif; font-size:0.78rem; letter-spacing:0.05em;">Ancient Martinist Order</span>
+        <div style="margin-top:2rem; max-width:340px; margin-left:auto; margin-right:auto; width:100%;">
+          <div style="background:rgba(158,42,42,0.04); border:1px solid rgba(176,184,193,0.15); overflow:hidden;">
+            <div style="background:var(--accent); padding:12px 16px; display:flex; align-items:center; gap:10px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--parchment)" style="flex-shrink:0;"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.514c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+              <span style="color:var(--parchment); font-family:'Cinzel',serif; font-size:0.78rem; letter-spacing:0.05em;">Ancient Martinist Order</span>
             </div>
             <div style="padding:14px 16px;">
-              <p style="color:rgba(245,240,232,0.5); font-size:0.88rem; line-height:1.6; margin:0 0 12px;">Follow us on Facebook for updates, reflections, and news from the Order.</p>
+              <p style="color:var(--text-light); font-size:0.88rem; line-height:1.6; margin:0 0 12px;">Follow us on Facebook for updates, reflections, and news from the Order.</p>
               <a href="https://www.facebook.com/ancientmartinistorder/" target="_blank" rel="noopener noreferrer"
-                style="display:block; text-align:center; padding:9px 16px; background:#1877F2; color:white; text-decoration:none; font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.1em; border-radius:2px;">
+                style="display:block; text-align:center; padding:9px 16px; background:var(--accent); color:var(--parchment); text-decoration:none; font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.1em; border-radius:0; transition:background 0.3s;">
                 Visit our Facebook Page
               </a>
             </div>
@@ -190,7 +191,7 @@
           <p>You have already sent us a message recently.</p>
           <p>We are reading it carefully and will respond to you personally in due time.</p>
           <p>If your matter is urgent, you may write to us directly at<br>
-            <a href="mailto:contact@amoph.org">contact@amoph.org</a>
+            <a href="/cdn-cgi/l/email-protection#b4d7dbdac0d5d7c0f4d5d9dbc4dc9adbc6d3"><span class="__cf_email__" data-cfemail="f0939f9e84919384b0919d9f8098de9f8297">[email&#160;protected]</span></a>
           </p>
         </div>
 
@@ -238,7 +239,7 @@
 
           <p id="form-error" style="display:none; margin-top:1rem; color:#c0706a; font-size:0.9rem; text-align:center; line-height:1.6;">
             Something went wrong. Please try again or write to us directly at
-            <a href="mailto:contact@amoph.org" style="color:#c0706a;">contact@amoph.org</a>.
+            <a href="/cdn-cgi/l/email-protection#b8dbd7d6ccd9dbccf8d9d5d7c8d096d7cadf" style="color:#c0706a;"><span class="__cf_email__" data-cfemail="6d0e0203190c0e192d0c00021d0543021f0a">[email&#160;protected]</span></a>.
           </p>
         </form>
 
@@ -303,7 +304,7 @@
 
   <div id="site-footer"></div>
 
-  <script src="/script.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/script.js"></script>
   <script>
     (function () {
       var COOLDOWN_MS = 15 * 24 * 60 * 60 * 1000; // 15 days
@@ -341,24 +342,4 @@
             headers: { 'Accept': 'application/json' }
           })
           .then(function (res) {
-            if (res.ok) {
-              form.reset();
-              btn.style.display = 'none';
-              success.style.display = 'block';
-              localStorage.setItem(KEY, Date.now().toString());
-            } else {
-              throw new Error('error');
-            }
-          })
-          .catch(function () {
-            btn.textContent = 'Send Message';
-            btn.disabled = false;
-            error.style.display = 'block';
-          });
-        });
-      }
-    })();
-  </script>
-
-</body>
-</html>
+            if (res.o
