@@ -1409,25 +1409,25 @@ a {
 /* ─────────────────────────────────────────
    LIBRARY PAGE
 ───────────────────────────────────────── */
-
+ 
 .library-category {
   margin-bottom: 5rem;
   padding-bottom: 5rem;
   border-bottom: 1px solid rgba(176,184,193,0.08);
 }
-
+ 
 .library-category:last-child {
   border-bottom: none;
   padding-bottom: 0;
 }
-
+ 
 .category-header {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   margin-bottom: 2.5rem;
 }
-
+ 
 .category-numeral {
   font-family: 'Cormorant Garamond', serif;
   font-size: 4rem;
@@ -1438,7 +1438,7 @@ a {
   flex-shrink: 0;
   user-select: none;
 }
-
+ 
 .category-label {
   font-family: 'Cinzel', serif;
   font-size: 0.65rem;
@@ -1448,27 +1448,27 @@ a {
   margin-bottom: 0.25rem;
   display: block;
 }
-
+ 
 .category-sub {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: 0.95rem;
   color: var(--gold-light);
 }
-
+ 
 /* ─── Author entries ─── */
-
+ 
 .author-entry {
   margin-bottom: 2.5rem;
   padding-left: 1.5rem;
   border-left: 1px solid rgba(176,184,193,0.15);
   transition: border-color 0.3s;
 }
-
+ 
 .author-entry:hover {
   border-left-color: rgba(158,42,42,0.6);
 }
-
+ 
 .author-entry__name {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.25rem;
@@ -1476,7 +1476,7 @@ a {
   color: var(--parchment);
   margin-bottom: 0.2rem;
 }
-
+ 
 .author-entry__dates {
   font-family: 'Cinzel', serif;
   font-size: 0.58rem;
@@ -1485,37 +1485,37 @@ a {
   text-transform: uppercase;
   margin-left: 0.6rem;
 }
-
+ 
 .author-entry__note {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 0.95rem;
-  color: var(--text-light);
+  font-size: 1rem;
+  color: rgba(245,240,232,0.6);
   margin-bottom: 0.9rem;
-  line-height: 1.7;
+  line-height: 1.9;
 }
-
+ 
 /* ─── Book list ─── */
-
+ 
 .book-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
+ 
 .book-list li {
   padding: 0.8rem 0 0.8rem 1.1rem;
   border-bottom: 1px solid rgba(176,184,193,0.08);
   position: relative;
-  font-size: 0.9rem;
-  line-height: 1.7;
-  color: rgba(236,238,240,0.85);
+  font-size: 1rem;
+  line-height: 1.9;
+  color: rgba(245,240,232,0.8);
   transition: background 0.2s;
 }
-
+ 
 .book-list li:last-child { border-bottom: none; }
 .book-list li:hover { background: rgba(158,42,42,0.04); }
-
+ 
 .book-list li::before {
   content: '✦';
   position: absolute;
@@ -1526,14 +1526,14 @@ a {
   font-size: 0.45rem;
   line-height: 1.9;
 }
-
+ 
 .book-title {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   color: var(--parchment);
-  font-size: 0.98rem;
+  font-size: 1rem;
 }
-
+ 
 .book-year {
   font-family: 'Cinzel', serif;
   font-size: 0.58rem;
@@ -1541,17 +1541,17 @@ a {
   color: var(--gold);
   margin-left: 5px;
 }
-
+ 
 .book-note {
   display: block;
-  font-size: 0.82rem;
-  color: var(--text-light);
+  font-size: 0.9rem;
+  color: rgba(245,240,232,0.6);
   margin-top: 3px;
-  line-height: 1.6;
+  line-height: 1.9;
 }
-
+ 
 /* ─── Read link ─── */
-
+ 
 a.read-link {
   display: inline-flex;
   align-items: center;
@@ -1568,16 +1568,16 @@ a.read-link {
   text-decoration: none;
   white-space: nowrap;
 }
-
+ 
 a.read-link:hover {
   color: #c44;
   border-color: #c44;
 }
-
+ 
 a.read-link::after { content: ' ↗'; }
-
+ 
 /* ─── Manuscript badge ─── */
-
+ 
 .ms-badge {
   display: inline-block;
   font-family: 'Cinzel', serif;
