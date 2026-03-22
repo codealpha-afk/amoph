@@ -436,7 +436,7 @@ a {
 
   /* Hero quote */
   .hero-quote-section {
-    padding: 7rem 2rem;
+    padding: 5rem 2rem;
     text-align: center;
     background: var(--ink3);
     border-top: 1px solid rgba(176,184,193,0.05);
