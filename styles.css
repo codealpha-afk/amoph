@@ -851,7 +851,7 @@ a {
     background: rgba(158,42,42,0.04);
     border: 1px solid rgba(176,184,193,0.2);
     padding: 3rem 4rem;
-    margin-top: 3rem;
+    margin-top: 0;
     text-align: center;
   }
 
