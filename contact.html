@@ -65,6 +65,24 @@
   <link rel="stylesheet" href="/styles.css">
 
   <style>
+    /* ── Form fields ── */
+    .form-field {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(176,184,193,0.15);
+      color: var(--text-primary, #f5f0e8);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      border-radius: 2px;
+      box-sizing: border-box;
+      transition: border-color 0.2s ease;
+    }
+    .form-field:focus { border-color: rgba(212,180,131,0.45); }
+    .form-field::placeholder { color: rgba(245,240,232,0.22); }
+    select.form-field option { background: #1a1510; color: #f5f0e8; }
+
     /* ── FAQ ── */
     .faq-list { max-width: 720px; }
     .faq-item { border-top: 1px solid rgba(176,184,193,0.08); }
@@ -86,35 +104,29 @@
     .faq-question::after {
       content: '+';
       font-size: 1.2rem;
-      opacity: 0.5;
+      opacity: 0.45;
       flex-shrink: 0;
       margin-left: 1rem;
     }
     details[open] .faq-question::after { content: '\2212'; }
     .faq-answer { padding: 0 0 1.2rem; }
     .faq-answer p {
-      color: rgba(245,240,232,0.65);
+      color: rgba(245,240,232,0.62);
       font-size: 0.95rem;
-      line-height: 1.8;
+      line-height: 1.85;
       margin: 0;
     }
 
-    /* ── Form inputs ── */
-    .form-field {
-      width: 100%;
-      padding: 0.7rem 1rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(176,184,193,0.15);
-      color: var(--text-primary, #f5f0e8);
-      font-family: inherit;
-      font-size: 0.95rem;
-      outline: none;
-      border-radius: 2px;
-      box-sizing: border-box;
+    /* ── Response note ── */
+    .response-note {
+      margin-top: 0.85rem;
+      padding: 0.65rem 1rem;
+      background: rgba(176,184,193,0.05);
+      border-left: 2px solid rgba(212,180,131,0.3);
+      color: rgba(245,240,232,0.5);
+      font-size: 0.84rem;
+      line-height: 1.6;
     }
-    .form-field:focus { border-color: rgba(212,180,131,0.4); }
-    .form-field::placeholder { color: rgba(245,240,232,0.25); }
-    select.form-field option { background: #1a1510; color: #f5f0e8; }
   </style>
 </head>
 <body>
@@ -122,6 +134,7 @@
   <!-- HEADER -->
   <div id="site-header"></div>
 
+  <!-- HERO -->
   <div class="page-hero">
     <div class="page-hero-inner">
       <span class="page-eyebrow">Reach Out</span>
@@ -129,17 +142,23 @@
     </div>
   </div>
 
-  <!-- MAIN CONTACT SECTION -->
+  <!-- ══════════════════════════════════════
+       MAIN CONTACT SECTION
+       Left: intro + contact info
+       Right: callout + send message form
+  ══════════════════════════════════════ -->
   <div class="content-area">
     <div class="two-col">
 
-      <!-- LEFT: Info + Facebook embed -->
+      <!-- LEFT: Intro + contact details + Facebook widget -->
       <div>
         <div class="gold-rule"></div>
+
         <p>The Order finds its members through sincere inquiry, personal conversation, and the quiet workings of providence. We do not hold open days, mass events, or public recruitment drives.</p>
         <p>If you have questions about the Order, its teachings, or whether this path might be right for you, we welcome your message. There is no obligation, and no rush. The path opens in its own time.</p>
 
-        <div style="margin-top: 2.5rem;">
+        <!-- Contact details -->
+        <div style="margin-top:2.5rem;">
           <div style="display:flex; gap:1.5rem; padding:1rem 0; border-top:1px solid rgba(176,184,193,0.08);">
             <span class="minor-heading" style="min-width:80px; margin:0; padding-top:2px;">Email</span>
             <a href="mailto:contact@amoph.org" style="color:var(--gold-light); text-decoration:none;">contact@amoph.org</a>
@@ -148,43 +167,47 @@
             <span class="minor-heading" style="min-width:80px; margin:0; padding-top:2px;">Facebook</span>
             <a href="https://facebook.com/ancientmartinistorder" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light); text-decoration:none;">facebook.com/ancientmartinistorder</a>
           </div>
-
-          <!-- Facebook Page Widget -->
-          <div style="margin-top:1rem; margin-bottom:1rem; max-width:340px;">
-            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(176,184,193,0.12); border-radius:4px; overflow:hidden;">
-              <div style="background:#1877F2; padding:12px 16px; display:flex; align-items:center; gap:10px;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.514c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-                <span style="color:white; font-family:'Cinzel',serif; font-size:0.78rem; letter-spacing:0.05em;">Ancient Martinist Order</span>
-              </div>
-              <div style="padding:16px;">
-                <p style="color:rgba(245,240,232,0.55); font-size:0.88rem; line-height:1.6; margin:0 0 14px;">Follow us on Facebook for updates, reflections, and news from the Order.</p>
-                <a href="https://www.facebook.com/ancientmartinistorder/" target="_blank" rel="noopener noreferrer"
-                  style="display:block; text-align:center; padding:9px 16px; background:#1877F2; color:white; text-decoration:none; font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.1em; border-radius:2px;">
-                  Visit our Facebook Page
-                </a>
-              </div>
-            </div>
-          </div>
-
           <div style="display:flex; gap:1.5rem; padding:1rem 0; border-top:1px solid rgba(176,184,193,0.08); border-bottom:1px solid rgba(176,184,193,0.08);">
             <span class="minor-heading" style="min-width:80px; margin:0; padding-top:2px;">Philippines</span>
             <span style="color:rgba(245,240,232,0.6); font-size:0.95rem;">The Lodge serves seekers throughout the Philippine archipelago.</span>
           </div>
         </div>
+
+        <!-- Facebook Page Widget — moved below contact details -->
+        <div style="margin-top:2rem; max-width:340px;">
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(176,184,193,0.12); border-radius:4px; overflow:hidden;">
+            <div style="background:#1877F2; padding:12px 16px; display:flex; align-items:center; gap:10px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.514c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+              <span style="color:white; font-family:'Cinzel',serif; font-size:0.78rem; letter-spacing:0.05em;">Ancient Martinist Order</span>
+            </div>
+            <div style="padding:14px 16px;">
+              <p style="color:rgba(245,240,232,0.5); font-size:0.88rem; line-height:1.6; margin:0 0 12px;">Follow us on Facebook for updates, reflections, and news from the Order.</p>
+              <a href="https://www.facebook.com/ancientmartinistorder/" target="_blank" rel="noopener noreferrer"
+                style="display:block; text-align:center; padding:9px 16px; background:#1877F2; color:white; text-decoration:none; font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.1em; border-radius:2px;">
+                Visit our Facebook Page
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- RIGHT: Contact Form -->
+      <!-- RIGHT: Callout + Send Message form -->
       <div>
+
         <div class="callout">
           <p>The Order never charges for inquiry, for membership, or for initiation. All are free, as they have always been.</p>
         </div>
 
-        <!-- Form submits directly to contact@amoph.org via Formspree -->
+        <!-- Form heading -->
+        <h3 style="margin-top:2rem; margin-bottom:0.25rem;">Send a Message</h3>
+        <p style="color:rgba(245,240,232,0.5); font-size:0.92rem; margin-bottom:1.5rem; margin-top:0.4rem;">Share who you are and what brings you here. We will respond personally.</p>
+
+        <!-- Formspree form — submits to contact@amoph.org -->
         <form
-          action="https://formspree.io/f/contact@amoph.org"
+          action="https://formspree.io/f/mgonbbdz"
           method="POST"
           id="contact-form"
-          style="margin-top: 1.5rem;"
         >
           <div style="margin-bottom:1.2rem;">
             <label for="cf-name" class="minor-heading" style="display:block; margin-bottom:0.5rem;">Your Name</label>
@@ -209,37 +232,47 @@
 
           <div style="margin-bottom:1.5rem;">
             <label for="cf-message" class="minor-heading" style="display:block; margin-bottom:0.5rem;">Your Message</label>
-            <textarea id="cf-message" name="message" required rows="5" placeholder="Share who you are and what brings you here…" class="form-field" style="resize:vertical;"></textarea>
+            <textarea id="cf-message" name="message" required rows="5" placeholder="Share who you are and what brings you here&#8230;" class="form-field" style="resize:vertical;"></textarea>
           </div>
 
-          <!-- Honeypot spam protection -->
+          <!-- Spam protection -->
           <input type="text" name="_gotcha" style="display:none;">
-          <input type="hidden" name="_subject" value="New inquiry from amoph.org">
+          <input type="hidden" name="_subject" value="New inquiry — amoph.org">
 
           <button type="submit" class="btn-primary" style="width:100%; cursor:pointer; border:none;">
             Send Message
           </button>
 
-          <p id="form-success" style="display:none; margin-top:1rem; color:var(--gold-light); font-size:0.9rem; text-align:center;">
-            Your message has been received. We will respond personally in due time.
+          <!-- Success message -->
+          <p id="form-success" style="display:none; margin-top:1.2rem; color:var(--gold-light); font-size:0.92rem; text-align:center; line-height:1.7;">
+            Your message has reached us.<br>
+            We read every inquiry with care and will respond to you personally.<br>
+            <em>The path opens in its own time.</em>
           </p>
-          <p id="form-error" style="display:none; margin-top:1rem; color:#c0706a; font-size:0.9rem; text-align:center;">
-            Something went wrong. Please try again or email us directly.
+
+          <!-- Error message -->
+          <p id="form-error" style="display:none; margin-top:1rem; color:#c0706a; font-size:0.9rem; text-align:center; line-height:1.6;">
+            Something went wrong. Please try again or write to us directly at
+            <a href="mailto:contact@amoph.org" style="color:#c0706a;">contact@amoph.org</a>.
           </p>
         </form>
 
-        <p style="margin-top:0.75rem; color:rgba(245,240,232,0.35); font-size:0.82rem; text-align:center;">
-          We typically respond within 3–5 days.
-        </p>
-      </div>
+        <!-- Response time note — more visible -->
+        <div class="response-note">
+          We typically respond within 3–5 days. All inquiries are read and answered personally.
+        </div>
 
+      </div>
     </div>
   </div>
 
-  <!-- FAQ SECTION -->
+  <!-- ══════════════════════════════════════
+       FAQ SECTION
+  ══════════════════════════════════════ -->
   <div class="content-area" style="border-top:1px solid rgba(176,184,193,0.08); padding-top:3rem; margin-top:1rem;">
     <div class="gold-rule"></div>
-    <h2 style="margin-bottom:2.5rem;">Frequently Asked <em>Questions</em></h2>
+    <h2 style="margin-bottom:0.75rem;">Frequently Asked <em>Questions</em></h2>
+    <p style="color:rgba(245,240,232,0.45); font-size:0.95rem; margin-bottom:2.5rem; max-width:560px;">Before reaching out, you may find your answer here. If not, we welcome your message.</p>
 
     <div class="faq-list">
 
@@ -294,10 +327,10 @@
   <script src="/script.js"></script>
 
   <script>
-    // Formspree AJAX submission — no page reload
+    // Formspree AJAX — no page reload on submit
     const form = document.getElementById('contact-form');
     if (form) {
-      form.addEventListener('submit', async function(e) {
+      form.addEventListener('submit', async function (e) {
         e.preventDefault();
         const btn = form.querySelector('button[type="submit"]');
         const success = document.getElementById('form-success');
@@ -317,7 +350,7 @@
             btn.style.display = 'none';
             success.style.display = 'block';
           } else {
-            throw new Error('Server error');
+            throw new Error('error');
           }
         } catch {
           btn.textContent = 'Send Message';
