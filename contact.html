@@ -3,29 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Contact | AMO Philippines</title>
+  <title>Contact | AMO Philippines</title>
   <!-- META_START --> <!-- META_END -->
 
   <link rel="canonical" href="https://amoph.org/contact">
 
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://amoph.org/contact">
-<meta property="og:site_name" content="Ancient Martinist Order Philippines">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://amoph.org/contact">
+  <meta property="og:site_name" content="Ancient Martinist Order Philippines">
+  <meta property="og:title" content="Contact Us | AMOPH">
+  <meta property="og:description" content="Reach out to the AMOPH. Connect with our community for matters regarding the Order, its teachings, and the path of membership in the Philippines.">
+  <meta property="og:image" content="https://amoph.org/images/og-images/contact-us.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Contact Ancient Martinist Order Philippines">
+  <meta property="og:locale" content="en_PH">
 
-<meta property="og:title" content="Contact Us | AMOPH">
-<meta property="og:description" content="Reach out to the AMOPH. Connect with our community for matters regarding the Order, its teachings, and the path of membership in the Philippines.">
-
-<meta property="og:image" content="https://amoph.org/images/og-images/contact-us.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Contact Ancient Martinist Order Philippines">
-
-<meta property="og:locale" content="en_PH">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Contact Us | AMOPH">
-<meta name="twitter:description" content="Reach out to the AMOPH. Connect with our community for matters regarding the Order, its teachings, and the path of membership in the Philippines.">
-<meta name="twitter:image" content="https://amoph.org/images/og-images/contact-us.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Us | AMOPH">
+  <meta name="twitter:description" content="Reach out to the AMOPH. Connect with our community for matters regarding the Order, its teachings, and the path of membership in the Philippines.">
+  <meta name="twitter:image" content="https://amoph.org/images/og-images/contact-us.jpg">
 
   <!-- Geo / Local -->
   <meta name="geo.region" content="PH">
@@ -37,7 +34,6 @@
   <meta name="keywords" content="Ancient Martinist Order Philippines, AMO Philippines, Martinist initiation Manila, Martinism Philippines, esoteric brotherhood Philippines, Martinist Order, Saint-Martin tradition, initiatic fraternity Philippines, Western esotericism Philippines, amoph.org, Ordre Martiniste">
   <meta name="author" content="Ancient Martinist Order — Philippines">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://amoph.org/contact.html">
 
   <!-- Schema.org -->
   <script type="application/ld+json">
@@ -51,7 +47,7 @@
     "foundingDate": "2000",
     "areaServed": { "@type": "Country", "name": "Philippines" },
     "address": { "@type": "PostalAddress", "addressLocality": "Manila", "addressCountry": "PH" },
-    "contactPoint": { "@type": "ContactPoint", "contactType": "membership inquiry", "url": "https://amoph.org/contact.html" },
+    "contactPoint": { "@type": "ContactPoint", "contactType": "membership inquiry", "url": "https://amoph.org/contact" },
     "knowsAbout": ["Martinism","Western Esotericism","Initiatic Tradition","Louis-Claude de Saint-Martin","Mart\u00ednez de Pasqually","Ordre Martiniste","Divine Reintegration","Esoteric Philosophy"]
   }
   </script>
@@ -67,6 +63,59 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/styles.css">
+
+  <style>
+    /* ── FAQ ── */
+    .faq-list { max-width: 720px; }
+    .faq-item { border-top: 1px solid rgba(176,184,193,0.08); }
+    .faq-item:last-child { border-bottom: 1px solid rgba(176,184,193,0.08); }
+    .faq-question {
+      list-style: none;
+      padding: 1.2rem 0;
+      cursor: pointer;
+      font-family: 'Cinzel', serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.03em;
+      color: var(--gold-light, #d4b483);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .faq-question::-webkit-details-marker { display: none; }
+    .faq-question::after {
+      content: '+';
+      font-size: 1.2rem;
+      opacity: 0.5;
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+    details[open] .faq-question::after { content: '\2212'; }
+    .faq-answer { padding: 0 0 1.2rem; }
+    .faq-answer p {
+      color: rgba(245,240,232,0.65);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* ── Form inputs ── */
+    .form-field {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(176,184,193,0.15);
+      color: var(--text-primary, #f5f0e8);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      border-radius: 2px;
+      box-sizing: border-box;
+    }
+    .form-field:focus { border-color: rgba(212,180,131,0.4); }
+    .form-field::placeholder { color: rgba(245,240,232,0.25); }
+    select.form-field option { background: #1a1510; color: #f5f0e8; }
+  </style>
 </head>
 <body>
 
@@ -80,10 +129,11 @@
     </div>
   </div>
 
+  <!-- MAIN CONTACT SECTION -->
   <div class="content-area">
     <div class="two-col">
 
-      <!-- LEFT -->
+      <!-- LEFT: Info + Facebook embed -->
       <div>
         <div class="gold-rule"></div>
         <p>The Order finds its members through sincere inquiry, personal conversation, and the quiet workings of providence. We do not hold open days, mass events, or public recruitment drives.</p>
@@ -98,10 +148,12 @@
             <span class="minor-heading" style="min-width:80px; margin:0; padding-top:2px;">Facebook</span>
             <a href="https://facebook.com/ancientmartinistorder" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light); text-decoration:none;">facebook.com/ancientmartinistorder</a>
           </div>
+
           <!-- Facebook Page Embed -->
+          <!-- Replace YOUR_APP_ID with your actual Facebook App ID from developers.facebook.com -->
           <div style="margin-top:1rem; margin-bottom:1rem;">
             <iframe
-              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fancientmartinistorder%2F&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true"
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fancientmartinistorder%2F&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=YOUR_APP_ID"
               width="340"
               height="500"
               style="border:none; overflow:hidden; max-width:100%; display:block;"
@@ -111,6 +163,7 @@
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
             </iframe>
           </div>
+
           <div style="display:flex; gap:1.5rem; padding:1rem 0; border-top:1px solid rgba(176,184,193,0.08); border-bottom:1px solid rgba(176,184,193,0.08);">
             <span class="minor-heading" style="min-width:80px; margin:0; padding-top:2px;">Philippines</span>
             <span style="color:rgba(245,240,232,0.6); font-size:0.95rem;">The Lodge serves seekers throughout the Philippine archipelago.</span>
@@ -118,17 +171,117 @@
         </div>
       </div>
 
-      <!-- RIGHT -->
+      <!-- RIGHT: Contact Form -->
       <div>
         <div class="callout">
           <p>The Order never charges for inquiry, for membership, or for initiation. All are free, as they have always been.</p>
         </div>
-        <div class="mailto-box" style="margin-top: 0;">
-          <h3>Send a Message</h3>
-          <p>Share who you are and what brings you here. We will respond personally.</p>
-          <a class="btn-primary" id="embtn2">Open in Email</a>
-        </div>
+
+        <!-- SETUP: Sign up at formspree.io → New Form → copy your form ID and replace YOUR_FORM_ID below -->
+        <form
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+          id="contact-form"
+          style="margin-top: 1.5rem;"
+        >
+          <div style="margin-bottom:1.2rem;">
+            <label for="cf-name" class="minor-heading" style="display:block; margin-bottom:0.5rem;">Your Name</label>
+            <input type="text" id="cf-name" name="name" required placeholder="How you wish to be addressed" class="form-field">
+          </div>
+
+          <div style="margin-bottom:1.2rem;">
+            <label for="cf-email" class="minor-heading" style="display:block; margin-bottom:0.5rem;">Email Address</label>
+            <input type="email" id="cf-email" name="email" required placeholder="We will reply here" class="form-field">
+          </div>
+
+          <div style="margin-bottom:1.2rem;">
+            <label for="cf-subject" class="minor-heading" style="display:block; margin-bottom:0.5rem;">Subject</label>
+            <select id="cf-subject" name="subject" class="form-field">
+              <option value="">Select a topic</option>
+              <option value="Membership Inquiry">Membership Inquiry</option>
+              <option value="About the Order">About the Order</option>
+              <option value="About Martinism">About Martinism</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom:1.5rem;">
+            <label for="cf-message" class="minor-heading" style="display:block; margin-bottom:0.5rem;">Your Message</label>
+            <textarea id="cf-message" name="message" required rows="5" placeholder="Share who you are and what brings you here…" class="form-field" style="resize:vertical;"></textarea>
+          </div>
+
+          <!-- Honeypot spam protection -->
+          <input type="text" name="_gotcha" style="display:none;">
+          <input type="hidden" name="_subject" value="New inquiry from amoph.org">
+
+          <button type="submit" class="btn-primary" style="width:100%; cursor:pointer; border:none;">
+            Send Message
+          </button>
+
+          <p id="form-success" style="display:none; margin-top:1rem; color:var(--gold-light); font-size:0.9rem; text-align:center;">
+            Your message has been received. We will respond personally in due time.
+          </p>
+          <p id="form-error" style="display:none; margin-top:1rem; color:#c0706a; font-size:0.9rem; text-align:center;">
+            Something went wrong. Please try again or email us directly.
+          </p>
+        </form>
+
+        <p style="margin-top:0.75rem; color:rgba(245,240,232,0.35); font-size:0.82rem; text-align:center;">
+          We typically respond within 3–5 days.
+        </p>
       </div>
+
+    </div>
+  </div>
+
+  <!-- FAQ SECTION -->
+  <div class="content-area" style="border-top:1px solid rgba(176,184,193,0.08); padding-top:3rem; margin-top:1rem;">
+    <div class="gold-rule"></div>
+    <h2 style="margin-bottom:2.5rem;">Frequently Asked <em>Questions</em></h2>
+
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary class="faq-question">What is Martinism?</summary>
+        <div class="faq-answer">
+          <p>Martinism is a form of Western esoteric and mystical philosophy rooted in the teachings of Louis-Claude de Saint-Martin (1743–1803) and Martínez de Pasqually. It is a path of inner transformation, concerned with the reintegration of the human being with the Divine — a return to the original state from which humanity has fallen. It is not a religion, but an initiatic tradition that complements sincere spiritual seeking of any background.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Do I need prior esoteric knowledge?</summary>
+        <div class="faq-answer">
+          <p>No. No prior knowledge of esotericism, mysticism, or any tradition is required to inquire or to begin. What matters is sincerity, an open mind, and a genuine desire to seek. The Order does not test or evaluate intellectual credentials — it looks at the heart of the seeker.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Is initiation really free?</summary>
+        <div class="faq-answer">
+          <p>Yes, entirely. The Ancient Martinist Order Philippines does not charge for inquiry, for study materials, for initiation, or for membership at any level. This has always been the case, and it will always remain so. Any Order that charges for initiation is not transmitting the authentic Martinist tradition.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Where do meetings take place?</summary>
+        <div class="faq-answer">
+          <p>The Lodge serves seekers throughout the Philippine archipelago. Meetings and initiations are conducted in person through private arrangement. Specific details regarding location are shared directly with those who have made sincere contact with the Order. We do not hold public events or advertise meeting places openly.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">How long does the process take?</summary>
+        <div class="faq-answer">
+          <p>There is no fixed timeline. The path unfolds according to the readiness of the seeker and the rhythms of the Order's work. Initial correspondence may lead to a personal conversation, and from there the way forward becomes clearer. We encourage patience — this is not a path of urgency, but of depth.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Is this a secret society?</summary>
+        <div class="faq-answer">
+          <p>The Order is not secret — its existence, teachings, and history are openly available to those who seek them. It is, however, an initiatic fraternity, meaning certain aspects of its inner work and ceremonial life are reserved for those who have formally entered the Order. Discretion is valued, but secrecy for its own sake is not the spirit of Martinism.</p>
+        </div>
+      </details>
 
     </div>
   </div>
@@ -137,6 +290,41 @@
   <div id="site-footer"></div>
 
   <script src="/script.js"></script>
+
+  <script>
+    // Formspree AJAX submission — no page reload
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const success = document.getElementById('form-success');
+        const error = document.getElementById('form-error');
+        success.style.display = 'none';
+        error.style.display = 'none';
+        btn.textContent = 'Sending\u2026';
+        btn.disabled = true;
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            form.reset();
+            btn.style.display = 'none';
+            success.style.display = 'block';
+          } else {
+            throw new Error('Server error');
+          }
+        } catch {
+          btn.textContent = 'Send Message';
+          btn.disabled = false;
+          error.style.display = 'block';
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
