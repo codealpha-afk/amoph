@@ -1,0 +1,88 @@
+<!-- =============================================================
+  AMOPH · shared/footer.html
+  ───────────────────────────────────────────────────────────────
+  PURPOSE:
+    This is the SINGLE SOURCE OF TRUTH for the AMOPH footer.
+    Both sites use this exact file.
+
+  HOW EACH SITE USES IT:
+
+    • amoph.org (Cloudflare Pages, plain HTML):
+        script.js fetches this file at runtime and injects it
+        into <div id="site-footer"></div> on every page.
+        Place <div id="site-footer"></div> just before </body>.
+        The fetch path is '/shared/footer.html'.
+        The copyright year is set dynamically by script.js.
+
+    • blog.amoph.org (Eleventy + Nunjucks):
+        Included as a static partial in base.njk:
+        {% include "partials/footer.html" %}
+        The file at src/_includes/partials/footer.html should
+        be kept in sync with this file (see SYNCING below).
+
+  SYNCING blog.amoph.org:
+    Same approach as header.html — either copy manually or
+    use the prebuild sync script (scripts/sync-shared.js).
+
+  LOGO IMAGE:
+    Both sites need /images/logos/logo-footer.png locally.
+    Keep the same file in both repos under the same path.
+
+  COPYRIGHT YEAR:
+    On amoph.org: set by script.js after injection.
+    On blog.amoph.org: set by the inline <script> below,
+    which runs when the partial is rendered in the browser.
+  ============================================================= -->
+
+<footer class="site-footer" role="contentinfo">
+
+  <!-- ── Emblem ──────────────────────────────────────────────
+       Decorative footer logo. mix-blend-mode: lighten applied
+       via brand.css so it works on dark backgrounds.
+  ──────────────────────────────────────────────────────────── -->
+  <img
+    class="footer-emblem"
+    src="/images/logos/logo-footer.png"
+    alt="Ancient Martinist Order Emblem"
+  >
+
+  <!-- ── Brand name and tagline ───────────────────────────── -->
+  <span class="site-footer__name">Ancient Martinist Order — Philippines</span>
+  <span class="site-footer__tagline">Pax ✦ Lux ✦ Veritas</span>
+
+  <!-- ── Divider ──────────────────────────────────────────── -->
+  <div class="site-footer__divider" role="separator"></div>
+
+  <!-- ── Footer Navigation ────────────────────────────────────
+       All links use absolute URLs so they work correctly
+       whether rendered on amoph.org or blog.amoph.org.
+  ──────────────────────────────────────────────────────────── -->
+  <nav aria-label="Footer navigation">
+    <ul class="site-footer__links" role="list">
+      <li><a href="https://amoph.org/index.html">Home</a></li>
+      <li><a href="https://amoph.org/about.html">About</a></li>
+      <li><a href="https://amoph.org/history.html">History &amp; Lineage</a></li>
+      <li><a href="https://amoph.org/library.html">Library &amp; Resources</a></li>
+      <li><a href="https://amoph.org/membership.html">Membership</a></li>
+      <li><a href="https://blog.amoph.org/">Blog</a></li>
+      <li><a href="https://amoph.org/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Copyright ────────────────────────────────────────────
+       #footer-year is populated by script.js on amoph.org,
+       and by the inline script below on blog.amoph.org.
+  ──────────────────────────────────────────────────────────── -->
+  <p class="site-footer__copy">
+    © <span id="footer-year"></span> Ancient Martinist Order — AMOPH
+    · All rights reserved.
+  </p>
+
+</footer>
+
+<!-- Sets the year. On amoph.org, script.js also does this after
+     injection — this inline version is the fallback for Eleventy. -->
+<script>
+  var yearEl = document.getElementById('footer-year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
