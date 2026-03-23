@@ -54,6 +54,7 @@
   <link rel="icon" type="image/ico" href="/images/logos/favicon.ico">
   <link rel="apple-touch-icon" href="/images/logos/favicon.ico">
   <link rel="stylesheet" href="/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mailcheck/1.1.1/mailcheck.min.js"></script>
 
   <style>
     .faq-list { max-width: 720px; margin: 0 auto; }
@@ -153,7 +154,8 @@
                 <ul id="location-suggestions" style="display:none; position:absolute; top:100%; left:0; right:0; background:#1a1a1a; border:1px solid rgba(176,184,193,0.2); list-style:none; margin:0; padding:0; z-index:100; max-height:200px; overflow-y:auto;"></ul>
               </div>
               <div class="form-group">
-                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="email" id="email-field" name="email" placeholder="Email Address" required>
+                <small id="email-hint" style="display:none; color: var(--gold); font-size: 0.8rem; margin-top: 0.25rem; display:block;"></small>
               </div>
               <div class="form-group">
                 <textarea name="message" placeholder="Tell us about your background and what brings you here..." rows="5" required></textarea>
@@ -264,6 +266,23 @@
         })
         .catch(() => { suggestions.style.display = 'none'; });
     });
+
+    //Mailcheck
+    const emailField = document.getElementById('email-field');
+const emailHint = document.getElementById('email-hint');
+
+emailField.addEventListener('blur', function() {
+  Mailcheck.run({
+    email: emailField.value,
+    suggested: function(suggestion) {
+      emailHint.textContent = 'Did you mean ' + suggestion.full + '?';
+      emailHint.style.display = 'block';
+    },
+    empty: function() {
+      emailHint.style.display = 'none';
+    }
+  });
+});
 
     document.addEventListener('click', function(e) {
       if (!locationField.contains(e.target)) suggestions.style.display = 'none';
