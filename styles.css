@@ -991,6 +991,10 @@ button.btn-primary {
   align-items: start;
 }
 
+.blog-main {
+  min-width: 0;
+}
+
 .blog-card {
   display: block;
   padding: 2rem 0;
