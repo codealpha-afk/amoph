@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Membership · AMO Philippines</title>
+  <title>Membership | AMO Philippines</title>
   <!-- META_START --> <!-- META_END -->
 <link rel="canonical" href="https://amoph.org/membership">
 
@@ -140,36 +140,71 @@
 
       <p>The Order bestows upon each Initiate a precious inner tool: the means to awaken his or her Christic Consciousness, with the expectation that these teachings are applied to daily life — not left as abstract knowledge, but lived.</p>
     </div>
-
+    
+<!-- MEMBERSHIP INQUIRY START -->
 <div class="mailto-box">
   <h3>Begin Your Journey</h3>
   <p>If you feel called to this path, we invite you to reach out. A sincere inquiry is all that is needed.</p>
 
-  <form action="https://formspree.io/f/mlgpyejk" method="POST">
+  <form action="https://formspree.io/f/mlgpyejk" method="POST" id="initiation-form">
     <input type="hidden" name="_next" value="https://amoph.org/thank-you.html">
 
-    <div class="form-group">
-      <input type="text" name="name" placeholder="Full Name" required>
+    <div class="form-container">
+      
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Full Name" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="text" id="location-field" name="location" placeholder="City / Province" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Email Address" required>
+      </div>
+      
+      <div class="form-group">
+        <textarea name="background" placeholder="Prior esoteric or philosophical background (if any)" rows="3"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <textarea name="reason" placeholder="Why are you seeking initiation into the Martinist Order?" rows="4" required></textarea>
+      </div>
+      
+      <button type="submit" class="btn-primary">Submit Inquiry</button>
     </div>
-    <div class="form-group">
-      <input type="number" name="age" placeholder="Age" required>
-    </div>
-    <div class="form-group">
-      <input type="text" name="location" placeholder="City / Province" required>
-    </div>
-    <div class="form-group">
-      <input type="email" name="email" placeholder="Email Address" required>
-    </div>
-    <div class="form-group">
-      <textarea name="background" placeholder="Prior esoteric or philosophical background (if any)" rows="3"></textarea>
-    </div>
-    <div class="form-group">
-      <textarea name="reason" placeholder="Why are you seeking initiation into the Martinist Order?" rows="3" required></textarea>
-    </div>
-    <button type="submit" class="btn-primary">Submit Inquiry</button>
   </form>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const locationField = document.getElementById('location-field');
+    
+    // Visual cue that background work is happening
+    locationField.placeholder = "Detecting location...";
 
+    // Fetching data from ipapi.co (IP Geolocation)
+    fetch('https://ipapi.co/json/')
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+      })
+      .then(data => {
+        // Formats result as "City, Region" (e.g., Iloilo City, Iloilo)
+        if (data.city && data.region) {
+          locationField.value = `${data.city}, ${data.region}`;
+        } else {
+          locationField.placeholder = "City / Province";
+        }
+      })
+      .catch(error => {
+        // Fallback if the API is blocked or fails
+        console.error('Location detection failed:', error);
+        locationField.placeholder = "City / Province";
+      });
+  });
+</script>
+<!-- MEMBERSHIP INQUIRY END -->
+    
   </div>
 
   <!-- FOOTER -->
