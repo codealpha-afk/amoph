@@ -1,0 +1,524 @@
+/* =============================================================
+   AMOPH · shared/brand.css
+   ─────────────────────────────────────────────────────────────
+   PURPOSE:
+     This is the SINGLE SOURCE OF TRUTH for all AMOPH branding.
+     It covers design tokens, typography, header, nav, footer,
+     and global resets — everything that must look identical
+     across amoph.org AND blog.amoph.org.
+
+   HOSTED AT:
+     amoph repo → served via jsDelivr CDN
+     https://cdn.jsdelivr.net/gh/codealpha-afk/amoph@main/shared/brand.css
+
+   HOW EACH SITE USES IT:
+     • amoph.org     → <link rel="stylesheet" href="/shared/brand.css">
+                       (local, served by Cloudflare Pages directly)
+     • blog.amoph.org → <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/codealpha-afk/amoph@main/shared/brand.css">
+                       (fetched from CDN at page load)
+
+   WHAT GOES HERE vs. NOT HERE:
+     ✅ DO put here:  CSS variables (tokens), resets, fonts setup,
+                      header, hamburger, mobile nav, footer styles,
+                      global typography (body, p, a, h1–h4),
+                      utility classes used on both sites (.btn-primary etc.)
+     ❌ DON'T put here: Blog-specific styles (post layout, blog cards,
+                      pagination) — those stay in blog.amoph's blog.css.
+                      Page-specific styles (about, history, membership,
+                      library) — those stay in amoph's styles.css.
+
+   UPDATING:
+     Edit this file in the amoph repo.
+     amoph.org picks it up immediately on next deploy.
+     blog.amoph.org picks it up within ~24hrs (jsDelivr cache).
+     To force blog.amoph.org to pick up immediately, pin to a
+     commit hash instead of @main in the CDN URL.
+   ============================================================= */
+
+
+/* ─────────────────────────────────────────────────────────────
+   1. DESIGN TOKENS
+   These are the brand colors. Change them here and they update
+   everywhere on both sites automatically.
+───────────────────────────────────────────────────────────── */
+:root {
+  /* Primary palette */
+  --gold: #B0B8C1;
+  --gold-light: #D8DDE3;
+  --gold-dim: #6A7278;
+
+  /* Backgrounds */
+  --ink: #080808;        /* deepest background */
+  --ink2: #0F0F0F;       /* alternate section bg */
+  --ink3: #161616;       /* quote section bg */
+  --ink4: #1E1E1E;       /* card bg */
+  --charcoal: #1E1E1E;
+  --mid: #2A2A2A;
+
+  /* Text */
+  --parchment: #ECEEF0;       /* primary text */
+  --parchment-dark: #D8DDE3;
+  --cream: #F0F2F4;
+  --text: #ECEEF0;
+  --text-light: #B0B8C1;
+
+  /* Accent (crimson) */
+  --accent: #9E2A2A;
+  --accent-dim: #6B1A1A;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   2. GLOBAL RESET
+   Applied to both sites. Keeps box model consistent.
+───────────────────────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Remove default blue links globally */
+a {
+  color: inherit;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   3. BODY & BASE TYPOGRAPHY
+   Libre Baskerville is the body font for both sites.
+   Cinzel = headings/labels. Cormorant Garamond = display/italic.
+───────────────────────────────────────────────────────────── */
+body {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  background: var(--ink);
+  color: var(--parchment);
+}
+
+/* Lock scroll when mobile menu is open — used by script.js */
+body.nav-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: rgba(245, 240, 232, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   4. NOISE TEXTURE OVERLAY
+   Subtle grain effect applied globally via ::before on body.
+   Do not remove — it is part of the brand aesthetic.
+───────────────────────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   5. HEADER
+   Fixed top bar. Shared across both sites.
+   JS (shared/script.js) injects the HTML and sets .active class.
+───────────────────────────────────────────────────────────── */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 4rem;
+  background: linear-gradient(to bottom, rgba(13, 12, 10, 0.97), rgba(13, 12, 10, 0));
+  transition: background 0.4s;
+}
+
+/* Scrolled state — added by script.js on scroll */
+.site-header.scrolled {
+  background: rgba(13, 12, 10, 0.97);
+}
+
+
+/* ─── Logo ─── */
+.site-header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.site-header__logo img {
+  height: 34px;
+  width: auto;
+}
+
+.site-header__logo span {
+  position: relative;
+  top: 1px;
+}
+
+/* Mini logo icon next to brand name */
+.logo-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  mix-blend-mode: normal;
+  opacity: 0.9;
+}
+
+
+/* ─── Desktop nav links ─── */
+.site-header__links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.site-header__links a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--parchment);
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0.75;
+  transition: opacity 0.3s, color 0.3s;
+}
+
+.site-header__links a:hover,
+.site-header__links a.active {
+  opacity: 1;
+  color: var(--gold);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   6. HAMBURGER BUTTON (mobile only)
+   Hidden on desktop. Shown at ≤900px by the responsive block.
+   Animation state (.open) is toggled by script.js.
+───────────────────────────────────────────────────────────── */
+.site-header__hamburger {
+  display: none; /* shown via media query below */
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 10px;
+  background: none;
+  border: none;
+}
+
+.site-header__hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--gold);
+  transition: all 0.3s;
+}
+
+/* X animation when open */
+.site-header__hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.site-header__hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.site-header__hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   7. MOBILE NAV OVERLAY
+   Full-screen overlay triggered by hamburger.
+   .open class toggled by script.js toggleMobileNav().
+───────────────────────────────────────────────────────────── */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 12, 10, 0.98);
+  z-index: 190;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.98);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-nav.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transform: scale(1);
+}
+
+.mobile-nav a {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.3em;
+  color: var(--parchment);
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.mobile-nav a:hover {
+  color: var(--gold);
+  opacity: 1;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   8. FOOTER
+   Shared across both sites. HTML injected by script.js on
+   amoph.org, included as a Nunjucks partial on blog.amoph.org.
+───────────────────────────────────────────────────────────── */
+footer,
+.site-footer {
+  border-top: 1px solid rgba(176, 184, 193, 0.06);
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  background: var(--ink);
+}
+
+/* Footer emblem image */
+.footer-emblem {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  opacity: 0.85;
+  mix-blend-mode: lighten;
+}
+
+/* Brand name below emblem */
+.site-footer__name,
+.footer-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+/* Latin tagline */
+.site-footer__tagline,
+.footer-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: rgba(245, 240, 232, 0.4);
+  font-size: 0.95rem;
+}
+
+/* Divider line */
+.site-footer__divider {
+  width: 40px;
+  height: 1px;
+  background: rgba(176, 184, 193, 0.2);
+}
+
+/* Footer nav links */
+.site-footer__links,
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.site-footer__links a,
+.footer-links a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: rgba(245, 240, 232, 0.4);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.site-footer__links a:hover,
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+/* Copyright line */
+.site-footer__copy,
+.footer-copy {
+  font-size: 0.78rem;
+  color: rgba(245, 240, 232, 0.25);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   9. SHARED UTILITY CLASSES
+   Buttons and layout helpers used on both sites.
+───────────────────────────────────────────────────────────── */
+
+/* Primary CTA button (filled crimson) */
+.btn-primary {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  background: var(--accent);
+  color: var(--parchment);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dim);
+  transform: translateY(-2px);
+}
+
+/* Secondary CTA button (outlined) */
+.btn-outline {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid rgba(176, 184, 193, 0.2);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  display: inline-block;
+}
+
+.btn-outline:hover {
+  background: rgba(176, 184, 193, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Decorative gold rule (40px crimson line) */
+.gold-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+  margin-bottom: 2.5rem;
+}
+
+/* Section eyebrow label (Cinzel, spaced caps) */
+.section-label,
+.page-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* Fade-up animation (used by hero elements) */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   10. RESPONSIVE — SHARED BREAKPOINTS
+   Only header/footer/nav responsive rules live here.
+   Page-specific responsive rules stay in each site's own CSS.
+───────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  /* Collapse desktop nav, show hamburger */
+  .site-header {
+    padding: 1rem 1.5rem;
+  }
+  .site-header__links {
+    display: none;
+  }
+  .site-header__hamburger {
+    display: flex;
+  }
+
+  /* Footer compact */
+  footer,
+  .site-footer {
+    padding: 3rem 1.5rem;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   11. PRINT
+   Strip branding chrome for print. Shared across both sites.
+───────────────────────────────────────────────────────────── */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-family: Georgia, serif;
+  }
+
+  .site-header,
+  .site-header__links,
+  .site-header__hamburger,
+  .mobile-nav,
+  footer,
+  .site-footer {
+    display: none !important;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    background: none !important;
+  }
+
+  p {
+    color: black;
+    font-size: 12pt;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3 {
+    color: black;
+    page-break-after: avoid;
+  }
+}
