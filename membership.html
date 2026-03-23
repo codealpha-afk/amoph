@@ -142,66 +142,88 @@
     </div>
     
 <!-- MEMBERSHIP INQUIRY START -->
-<div class="mailto-box">
+<div class="mailto-box" id="inquiry-section">
   <h3>Begin Your Journey</h3>
   <p>If you feel called to this path, we invite you to reach out. A sincere inquiry is all that is needed.</p>
 
   <form action="https://formspree.io/f/mlgpyejk" method="POST" id="initiation-form">
-    <input type="hidden" name="_next" value="https://amoph.org/thank-you.html">
-
     <div class="form-container">
-      
       <div class="form-group">
         <input type="text" name="name" placeholder="Full Name" required>
       </div>
-      
       <div class="form-group">
         <input type="text" id="location-field" name="location" placeholder="City / Province" required>
       </div>
-      
       <div class="form-group">
         <input type="email" name="email" placeholder="Email Address" required>
       </div>
-      
       <div class="form-group">
         <textarea name="background" placeholder="Prior esoteric or philosophical background (if any)" rows="3"></textarea>
       </div>
-      
       <div class="form-group">
         <textarea name="reason" placeholder="Why are you seeking initiation into the Martinist Order?" rows="4" required></textarea>
       </div>
-      
       <button type="submit" class="btn-primary">Submit Inquiry</button>
     </div>
   </form>
-</div>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const locationField = document.getElementById('location-field');
-    
-    // Visual cue that background work is happening
-    locationField.placeholder = "Detecting location...";
 
-    // Fetching data from ipapi.co (IP Geolocation)
-    fetch('https://ipapi.co/json/')
-      .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.json();
-      })
-      .then(data => {
-        // Formats result as "City, Region" (e.g., Iloilo City, Iloilo)
-        if (data.city && data.region) {
-          locationField.value = `${data.city}, ${data.region}`;
-        } else {
-          locationField.placeholder = "City / Province";
-        }
-      })
-      .catch(error => {
-        // Fallback if the API is blocked or fails
-        console.error('Location detection failed:', error);
+  <div id="success-message" style="display:none; padding: 2rem 0; text-align: center;">
+    <div style="width: 40px; height: 1px; background: var(--accent); margin: 0 auto 2rem;"></div>
+    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--parchment); margin-bottom: 1rem;">Your inquiry has been received.</p>
+    <p style="color: rgba(245,240,232,0.7); font-size: 0.95rem; line-height: 1.8; max-width: 480px; margin: 0 auto 1.5rem;">We are grateful for your sincerity and look forward to connecting with you. A member of our Lodge will reach out to you shortly to arrange a personal meeting.</p>
+    <p style="color: rgba(245,240,232,0.5); font-size: 0.9rem; margin-bottom: 2rem;">If you have any further questions in the meantime, you may write to us directly at <a href="mailto:contact@amoph.org" style="color: var(--gold);">contact@amoph.org</a></p>
+    <a href="/" class="btn-outline" style="display: inline-block;">Return to Home</a>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const formContainer = document.querySelector('.form-container');
+  const locationField = document.getElementById('location-field');
+  const form = document.getElementById('initiation-form');
+
+  // 1. Check if already submitted
+  if (localStorage.getItem('form_sent')) {
+    form.style.display = 'none';
+    document.getElementById('success-message').style.display = 'block';
+    return;
+  }
+
+  // 2. Auto-detect location
+  locationField.placeholder = "Detecting location...";
+  fetch('https://ipapi.co/json/')
+    .then(res => res.json())
+    .then(data => {
+      if (data.city && data.region) {
+        locationField.value = `${data.city}, ${data.region}`;
+      } else {
         locationField.placeholder = "City / Province";
+      }
+    })
+    .catch(() => { locationField.placeholder = "City / Province"; });
+
+  // 3. Handle submission
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
       });
+
+      if (response.ok) {
+        localStorage.setItem('form_sent', 'true');
+        form.style.display = 'none';
+        document.getElementById('success-message').style.display = 'block';
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+    }
   });
+});
 </script>
 <!-- MEMBERSHIP INQUIRY END -->
     
