@@ -1,0 +1,104 @@
+<!-- =============================================================
+  AMOPH · shared/header.html
+  ───────────────────────────────────────────────────────────────
+  PURPOSE:
+    This is the SINGLE SOURCE OF TRUTH for the AMOPH header and
+    navigation. Both sites use this exact file.
+
+  HOW EACH SITE USES IT:
+
+    • amoph.org (Cloudflare Pages, plain HTML):
+        script.js fetches this file at runtime and injects it
+        into <div id="site-header"></div> on every page.
+        The fetch path is '/shared/header.html'.
+        Active nav link is set dynamically by script.js based
+        on window.location.pathname.
+
+    • blog.amoph.org (Eleventy + Nunjucks):
+        Included as a static partial in base.njk:
+        {% include "partials/header.html" %}
+        The file at src/_includes/partials/header.html should
+        be kept in sync with this file (see SYNCING below).
+
+  SYNCING blog.amoph.org:
+    Option A (manual): Copy this file to
+      blog.amoph/src/_includes/partials/header.html
+      whenever you update it here.
+    Option B (automated): Add a prebuild script in
+      blog.amoph's package.json that downloads this file
+      from jsDelivr before every Eleventy build:
+        "prebuild": "node scripts/sync-shared.js"
+      See scripts/sync-shared.js in blog.amoph repo.
+
+  LOGO IMAGES:
+    amoph.org        → /images/logos/logo-mini.png (local)
+    blog.amoph.org   → /images/logos/logo-mini.png (local copy)
+    Keep the same image in both repos under the same path.
+
+  ADDING A NEW NAV LINK:
+    1. Add the <li> to both the desktop links AND the mobile-nav
+       section below (they are separate — both must be updated).
+    2. Give it a unique id (e.g. id="nav-teachings").
+    3. Redeploy amoph.org. Copy file to blog.amoph partials.
+  ============================================================= -->
+
+<header>
+  <nav class="site-header" id="navbar" role="navigation" aria-label="Main navigation">
+
+    <!-- ── Logo / Brand ─────────────────────────────────────
+         href points to amoph.org root.
+         On blog.amoph.org this correctly links back to main site.
+    ──────────────────────────────────────────────────────── -->
+    <a class="site-header__logo" href="https://amoph.org/index.html">
+      <img src="/images/logos/logo-mini.png" alt="AMO Logo" class="logo-icon">
+      <span>AMO · Philippines</span>
+    </a>
+
+    <!-- ── Desktop Navigation Links ────────────────────────
+         script.js matches href vs window.location.pathname
+         and adds class="active" to the current page link.
+         External links (blog) use full URL — no active match needed.
+    ──────────────────────────────────────────────────────── -->
+    <ul class="site-header__links" role="list">
+      <li><a href="https://amoph.org/index.html"      id="nav-home">Home</a></li>
+      <li><a href="https://amoph.org/about.html"      id="nav-about">About Us</a></li>
+      <li><a href="https://amoph.org/history.html"    id="nav-history">History &amp; Lineage</a></li>
+      <li><a href="https://amoph.org/membership.html" id="nav-membership">Membership</a></li>
+      <li><a href="https://blog.amoph.org/"           id="nav-blog">Blog</a></li>
+      <li><a href="https://amoph.org/contact.html"    id="nav-contact">Contact</a></li>
+    </ul>
+
+    <!-- ── Hamburger Button (mobile only) ──────────────────
+         Shown at ≤900px (via brand.css media query).
+         Click handler attached by script.js after injection.
+         aria-expanded toggled by script.js toggleMobileNav().
+    ──────────────────────────────────────────────────────── -->
+    <button
+      class="site-header__hamburger"
+      id="hamburger"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </nav>
+</header>
+
+<!-- ── Mobile Navigation Overlay ───────────────────────────────
+     Full-screen overlay for mobile. Controlled by script.js.
+     .open class added/removed by toggleMobileNav().
+     closeMobileNav() is called on each link click.
+     Links mirror the desktop links above — keep them in sync.
+──────────────────────────────────────────────────────────────── -->
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="https://amoph.org/index.html"      id="mnav-home">Home</a>
+  <a href="https://amoph.org/about.html"      id="mnav-about">About Us</a>
+  <a href="https://amoph.org/history.html"    id="mnav-history">History &amp; Lineage</a>
+  <a href="https://amoph.org/membership.html" id="mnav-membership">Membership</a>
+  <a href="https://blog.amoph.org/"           id="mnav-blog">Blog</a>
+  <a href="https://amoph.org/contact.html"    id="mnav-contact">Contact</a>
+</nav>
