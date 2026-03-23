@@ -369,6 +369,17 @@ a {
     background: var(--accent-dim);
     transform: translateY(-2px);
   }
+button.btn-primary {
+  font-family: 'Cinzel', serif;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+button.btn-primary {
+  -webkit-appearance: none;
+  appearance: none;
+}
 
   .btn-outline {
     font-family: 'Cinzel', serif;
@@ -524,9 +535,9 @@ a {
     max-width: 780px;
   }
 
-  .section-block {
-    margin-bottom: 5 rem;
-  }
+.section-block {
+  margin-bottom: 5rem;
+}
 .section-block:last-of-type {
   margin-bottom: 2rem;
 }
