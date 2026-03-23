@@ -983,6 +983,32 @@ button.btn-primary {
     margin-bottom: 0.6rem;
   }
 
+/* ─── BLOG ─── */
+.blog-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 5rem;
+  align-items: start;
+}
+
+.blog-card {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(176,184,193,0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.3s;
+  align-items: start;
+}
+
+.blog-card:first-child {
+  border-top: 1px solid rgba(176,184,193,0.1);
+}
+
+.blog-card:hover { background: rgba(158,42,42,0.03); }
+
   .blog-card__tag {
     display: inline-block;
     font-family: 'Cinzel', serif;
