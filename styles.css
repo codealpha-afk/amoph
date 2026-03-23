@@ -992,15 +992,12 @@ button.btn-primary {
 }
 
 .blog-card {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 2rem;
+  display: block;
   padding: 2rem 0;
   border-bottom: 1px solid rgba(176,184,193,0.1);
   text-decoration: none;
   color: inherit;
   transition: background 0.3s;
-  align-items: start;
 }
 
 .blog-card:first-child {
@@ -1649,26 +1646,4 @@ a.read-link::after { content: ' ↗'; }
   padding: 1px 5px;
   margin-left: 6px;
   vertical-align: middle;
-}
-
-/* ─── BLOG CARD THUMBNAIL ─── */
-
-.blog-card__thumb {
-  width: 140px;
-  height: 100px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.blog-card__thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.75;
-  transition: opacity 0.3s;
-  mix-blend-mode: lighten;
-}
-
-.blog-card:hover .blog-card__thumb img {
-  opacity: 1;
 }
