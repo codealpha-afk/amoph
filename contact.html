@@ -56,24 +56,6 @@
   <link rel="stylesheet" href="/styles.css">
 
   <style>
-    .form-field {
-      width: 100%;
-      padding: 0.7rem 1rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(176,184,193,0.15);
-      color: var(--text-primary, #f5f0e8);
-      font-family: inherit;
-      font-size: 0.95rem;
-      outline: none;
-      border-radius: 2px;
-      box-sizing: border-box;
-      transition: border-color 0.2s ease;
-    }
-    .form-field:focus { border-color: rgba(176,184,193,0.45); }
-    .form-field::placeholder { color: rgba(245,240,232,0.22); }
-    select.form-field option { background: #1a1510; color: #f5f0e8; }
-    #contact-form label { color: var(--gold-dim, #6A7278); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; font-family: 'Cinzel', serif; }
-
     .faq-list { max-width: 720px; margin: 0 auto; }
     .faq-item { border-top: 1px solid rgba(176,184,193,0.08); }
     .faq-item:last-child { border-bottom: 1px solid rgba(176,184,193,0.08); }
@@ -95,33 +77,6 @@
     details[open] .faq-question::after { content: '\2212'; }
     .faq-answer { padding: 0 0 1.2rem; }
     .faq-answer p { color: rgba(245,240,232,0.62); font-size: 0.95rem; line-height: 1.85; margin: 0; }
-
-    .response-note {
-      margin-top: 0.85rem;
-      padding: 0.65rem 1rem;
-      background: rgba(176,184,193,0.05);
-      border-left: 2px solid rgba(158,42,42,0.4);
-      color: rgba(245,240,232,0.5);
-      font-size: 0.84rem;
-      line-height: 1.6;
-    }
-
-    .cooldown-msg {
-      display: none;
-      margin-top: 1.5rem;
-      padding: 1.5rem;
-      background: rgba(176,184,193,0.05);
-      border: 1px solid rgba(176,184,193,0.12);
-      border-left: 2px solid rgba(158,42,42,0.4);
-      text-align: center;
-    }
-    .cooldown-msg p {
-      color: rgba(245,240,232,0.6);
-      font-size: 0.92rem;
-      line-height: 1.75;
-      margin: 0 0 0.5rem;
-    }
-    .cooldown-msg a { color: var(--gold-light, #d4b483); }
   </style>
 </head>
 <body>
@@ -147,7 +102,7 @@
         <div style="margin-top:2.5rem;">
           <div style="display:flex; gap:1.5rem; padding:1rem 0; border-top:1px solid rgba(176,184,193,0.08);">
             <span class="minor-heading" style="min-width:80px; margin:0; padding-top:2px;">Email</span>
-            <a href="/cdn-cgi/l/email-protection#71121e1f0510120531101c1e01195f1e0316" style="color:var(--gold-light); text-decoration:none;"><span class="__cf_email__" data-cfemail="dfbcb0b1abbebcab9fbeb2b0afb7f1b0adb8">[email&#160;protected]</span></a>
+            <a href="mailto:contact@amoph.org" style="color:var(--gold-light); text-decoration:none;">contact@amoph.org</a>
           </div>
           <div style="display:flex; gap:1.5rem; padding:1rem 0; border-top:1px solid rgba(176,184,193,0.08);">
             <span class="minor-heading" style="min-width:80px; margin:0; padding-top:2px;">Facebook</span>
@@ -169,7 +124,7 @@
             <div style="padding:14px 16px;">
               <p style="color:var(--text-light); font-size:0.88rem; line-height:1.6; margin:0 0 12px;">Follow us on Facebook for updates, reflections, and news from the Order.</p>
               <a href="https://www.facebook.com/ancientmartinistorder/" target="_blank" rel="noopener noreferrer"
-                style="display:block; text-align:center; padding:9px 16px; background:var(--accent); color:var(--parchment); text-decoration:none; font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.1em; border-radius:0; transition:background 0.3s;">
+                style="display:block; text-align:center; padding:9px 16px; background:var(--accent); color:var(--parchment); text-decoration:none; font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.1em; transition:background 0.3s;">
                 Visit our Facebook Page
               </a>
             </div>
@@ -183,71 +138,42 @@
           <p>The Order never charges for inquiry, for membership, or for initiation. All are free, as they have always been.</p>
         </div>
 
-        <h3 style="margin-top:2rem; margin-bottom:0.25rem;">Send a Message</h3>
-        <p style="color:rgba(245,240,232,0.5); font-size:0.92rem; margin-bottom:1.5rem; margin-top:0.4rem;">Share who you are and what brings you here. We will respond personally.</p>
-
-        <!-- 15-day cooldown message (hidden by default) -->
-        <div class="cooldown-msg" id="form-cooldown">
-          <p>You have already sent us a message recently.</p>
-          <p>We are reading it carefully and will respond to you personally in due time.</p>
-          <p>If your matter is urgent, you may write to us directly at<br>
-            <a href="/cdn-cgi/l/email-protection#b4d7dbdac0d5d7c0f4d5d9dbc4dc9adbc6d3"><span class="__cf_email__" data-cfemail="f0939f9e84919384b0919d9f8098de9f8297">[email&#160;protected]</span></a>
-          </p>
-        </div>
-
         <!-- Contact form -->
-        <form action="https://formspree.io/f/mgonbbdz" method="POST" id="contact-form">
+        <div class="mailto-box" id="contact-section" style="margin-top: 2rem;">
+          <h3>Write to Us</h3>
+          <p>Whether you carry a question, a reflection, or simply feel drawn to reach out — we welcome your correspondence. All messages are read personally and answered with care.</p>
 
-          <div style="margin-bottom:1.2rem;">
-            <label for="cf-name" class="minor-heading" style="display:block; margin-bottom:0.5rem;">Your Name</label>
-            <input type="text" id="cf-name" name="name" required placeholder="How you wish to be addressed" class="form-field">
+          <form action="https://formspree.io/f/mgonbbdz" method="POST" id="contact-form">
+            <div class="form-container">
+              <div class="form-group">
+                <input type="text" name="name" placeholder="Full Name" required>
+              </div>
+              <div class="form-group" style="position: relative;">
+                <input type="text" id="location-field" name="location" placeholder="City / Province" required autocomplete="off">
+                <ul id="location-suggestions" style="display:none; position:absolute; top:100%; left:0; right:0; background:#1a1a1a; border:1px solid rgba(176,184,193,0.2); list-style:none; margin:0; padding:0; z-index:100; max-height:200px; overflow-y:auto;"></ul>
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" placeholder="Email Address" required>
+              </div>
+              <div class="form-group">
+                <textarea name="message" placeholder="Share who you are and what brings you here…" rows="5" required></textarea>
+              </div>
+              <input type="text" name="_gotcha" style="display:none;">
+              <input type="hidden" name="_subject" value="New inquiry — amoph.org">
+              <button type="submit" class="btn-primary">Send Message</button>
+            </div>
+          </form>
+
+          <div id="contact-success" style="display:none; padding: 2rem 0; text-align: center;">
+            <div style="width: 40px; height: 1px; background: var(--accent); margin: 0 auto 2rem;"></div>
+            <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--parchment); margin-bottom: 1rem;">Your message has reached us.</p>
+            <p style="color: rgba(245,240,232,0.7); font-size: 0.95rem; line-height: 1.8; max-width: 480px; margin: 0 auto 1.5rem;">We read every correspondence with care and will respond to you personally. A reply is typically given within a few days.</p>
+            <p style="color: rgba(245,240,232,0.5); font-size: 0.9rem; font-style: italic; margin-bottom: 2rem;">The path opens in its own time.</p>
+            <a href="/" class="btn-outline" style="display: inline-block;">Return to Home</a>
           </div>
-
-          <div style="margin-bottom:1.2rem;">
-            <label for="cf-email" class="minor-heading" style="display:block; margin-bottom:0.5rem;">Email Address</label>
-            <input type="email" id="cf-email" name="email" required placeholder="We will reply here" class="form-field">
-          </div>
-
-          <div style="margin-bottom:1.2rem;">
-            <label for="cf-subject" class="minor-heading" style="display:block; margin-bottom:0.5rem;">Subject</label>
-            <select id="cf-subject" name="subject" class="form-field">
-              <option value="">Select a topic</option>
-              <option value="Membership Inquiry">Membership Inquiry</option>
-              <option value="About the Order">About the Order</option>
-              <option value="About Martinism">About Martinism</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-
-          <div style="margin-bottom:1.5rem;">
-            <label for="cf-message" class="minor-heading" style="display:block; margin-bottom:0.5rem;">Your Message</label>
-            <textarea id="cf-message" name="message" required rows="5" placeholder="Share who you are and what brings you here&#8230;" class="form-field" style="resize:vertical;"></textarea>
-          </div>
-
-          <input type="text" name="_gotcha" style="display:none;">
-          <input type="hidden" name="_subject" value="New inquiry — amoph.org">
-
-          <button type="submit" class="btn-primary" style="width:100%; cursor:pointer; border:none;">
-            Send Message
-          </button>
-
-          <p id="form-success" style="display:none; margin-top:1.2rem; color:var(--gold-light); font-size:0.92rem; text-align:center; line-height:1.7;">
-            Your message has reached us.<br>
-            We read every inquiry with care and will respond to you personally.<br>
-            <em>The path opens in its own time.</em>
-          </p>
-
-          <p id="form-error" style="display:none; margin-top:1rem; color:#c0706a; font-size:0.9rem; text-align:center; line-height:1.6;">
-            Something went wrong. Please try again or write to us directly at
-            <a href="/cdn-cgi/l/email-protection#b8dbd7d6ccd9dbccf8d9d5d7c8d096d7cadf" style="color:#c0706a;"><span class="__cf_email__" data-cfemail="6d0e0203190c0e192d0c00021d0543021f0a">[email&#160;protected]</span></a>.
-          </p>
-        </form>
-
-        <div class="response-note">
-          We typically respond within 3–5 days. All inquiries are read and answered personally.
         </div>
-      </div>
 
+      </div>
     </div>
   </div>
 
@@ -304,42 +230,65 @@
 
   <div id="site-footer"></div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/script.js"></script>
+  <script src="/script.js"></script>
+
   <script>
-    (function () {
-      var COOLDOWN_MS = 15 * 24 * 60 * 60 * 1000; // 15 days
-      var KEY = 'amoph_last_submission';
+  document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById('contact-form');
+    const locationField = document.getElementById('location-field');
+    const suggestions = document.getElementById('location-suggestions');
 
-      var form = document.getElementById('contact-form');
-      var cooldown = document.getElementById('form-cooldown');
+    // Location autocomplete (Nominatim)
+    locationField.addEventListener('input', function() {
+      const val = this.value;
+      if (val.length < 3) { suggestions.style.display = 'none'; return; }
 
-      function showCooldown() {
-        if (form) form.style.display = 'none';
-        if (cooldown) cooldown.style.display = 'block';
+      fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(val)}&format=json&limit=5`)
+        .then(r => r.json())
+        .then(data => {
+          suggestions.innerHTML = '';
+          if (!data.length) { suggestions.style.display = 'none'; return; }
+          data.forEach(place => {
+            const li = document.createElement('li');
+            li.textContent = place.display_name;
+            li.style.cssText = 'padding: 0.6rem 1rem; cursor: pointer; color: rgba(245,240,232,0.8); font-size: 0.9rem; border-bottom: 1px solid rgba(176,184,193,0.08);';
+            li.addEventListener('mouseenter', () => li.style.background = 'rgba(158,42,42,0.1)');
+            li.addEventListener('mouseleave', () => li.style.background = 'transparent');
+            li.addEventListener('click', () => {
+              locationField.value = place.display_name;
+              suggestions.style.display = 'none';
+            });
+            suggestions.appendChild(li);
+          });
+          suggestions.style.display = 'block';
+        })
+        .catch(() => { suggestions.style.display = 'none'; });
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!locationField.contains(e.target)) suggestions.style.display = 'none';
+    });
+
+    // Handle submission
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          form.style.display = 'none';
+          document.getElementById('contact-success').style.display = 'block';
+        }
+      } catch (error) {
+        console.error('Submission error:', error);
       }
+    });
+  });
+  </script>
 
-      // Check on page load
-      var last = localStorage.getItem(KEY);
-      if (last && (Date.now() - parseInt(last, 10)) < COOLDOWN_MS) {
-        showCooldown();
-      }
-
-      // Handle submit
-      if (form) {
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-          var btn = form.querySelector('button[type="submit"]');
-          var success = document.getElementById('form-success');
-          var error = document.getElementById('form-error');
-          success.style.display = 'none';
-          error.style.display = 'none';
-          btn.textContent = 'Sending\u2026';
-          btn.disabled = true;
-
-          fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-          })
-          .then(function (res) {
-            if (res.o
+</body>
+</html>
