@@ -1624,3 +1624,25 @@ a.read-link::after { content: ' ↗'; }
   margin-left: 6px;
   vertical-align: middle;
 }
+
+/* ─── BLOG CARD THUMBNAIL ─── */
+
+.blog-card__thumb {
+  width: 140px;
+  height: 100px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.blog-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.75;
+  transition: opacity 0.3s;
+  mix-blend-mode: lighten;
+}
+
+.blog-card:hover .blog-card__thumb img {
+  opacity: 1;
+}
